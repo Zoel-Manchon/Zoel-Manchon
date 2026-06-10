@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=28&duration=2500&pause=800&color=3FB950&center=true&vCenter=true&width=950&lines=root%40zr00t%3A~%24+whoami;DAW+Student+%E2%80%94+Web+App+Development;Backend+%7C+IoT+%7C+Security;Learning+by+building+real+projects;ESP32+%E2%86%92+APIs+%E2%86%92+Telemetry" />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=28&duration=2500&pause=800&color=3FB950&center=true&vCenter=true&width=950&lines=root%40zr00t%3A~%24+whoami;Backend+%7C+IoT+%7C+Security;From+ESP32+sensors+to+Rust+APIs;Learning+by+building+real+projects;ESP32+%E2%86%92+APIs+%E2%86%92+Telemetry" />
 
 <br><br>
 
@@ -23,9 +23,8 @@
 ```bash
 $ whoami
 
-Zoel Arias
-├── DAW Student (Desarrollo de Aplicaciones Web)
-├── Backend & Web Developer in training
+Zoel Arias Manchón
+├── Backend & Web Developer
 ├── IoT & embedded tinkerer
 ├── Security enthusiast
 └── Building real connected projects to learn
@@ -42,48 +41,35 @@ Embedded Devices → Backend APIs → Databases → Telemetry → Security
 
 <div align="center">
 
-**Languages**
-
-<img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white"/>
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-<img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
-
-**Backend**
-
-<img src="https://img.shields.io/badge/Axum-000000?style=for-the-badge&logo=rust&logoColor=white"/>
-<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
-<img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/>
-
-**Databases**
-
-<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
-<img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"/>
-<img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white"/>
-
-**Frontend**
-
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-<img src="https://img.shields.io/badge/Astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white"/>
-<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"/>
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white"/>
-
-**IoT, Edge & Monitoring**
-
-<img src="https://img.shields.io/badge/ESP32-E7352C?style=for-the-badge&logoColor=white"/>
-<img src="https://img.shields.io/badge/LoRaWAN-0055FF?style=for-the-badge&logoColor=white"/>
-<img src="https://img.shields.io/badge/Node--RED-8F0000?style=for-the-badge&logo=nodered&logoColor=white"/>
-<img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=for-the-badge&logo=influxdb&logoColor=white"/>
-<img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white"/>
-
-**Tools & Interests**
-
-<img src="https://img.shields.io/badge/Linux-1793D1?style=for-the-badge&logo=linux&logoColor=white"/>
-<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
-<img src="https://img.shields.io/badge/Cybersecurity-111111?style=for-the-badge&logo=hackthebox&logoColor=9FEF00"/>
-<img src="https://img.shields.io/badge/Pygame-000000?style=for-the-badge&logo=python&logoColor=white"/>
+<table>
+  <tr>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" width="44" height="44" alt="Rust"/><br>Rust</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="44" height="44" alt="Python"/><br>Python</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="44" height="44" alt="TypeScript"/><br>TypeScript</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="44" height="44" alt="JavaScript"/><br>JavaScript</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" width="44" height="44" alt="PHP"/><br>PHP</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="44" height="44" alt="React"/><br>React</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg" width="44" height="44" alt="Astro"/><br>Astro</td>
+  </tr>
+  <tr>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="44" height="44" alt="Node.js"/><br>Node.js</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" width="44" height="44" alt="Laravel"/><br>Laravel</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="44" height="44" alt="PostgreSQL"/><br>PostgreSQL</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="44" height="44" alt="MySQL"/><br>MySQL</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="44" height="44" alt="MongoDB"/><br>MongoDB</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" width="44" height="44" alt="Redis"/><br>Redis</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="44" height="44" alt="Bootstrap"/><br>Bootstrap</td>
+  </tr>
+  <tr>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="44" height="44" alt="Docker"/><br>Docker</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" width="44" height="44" alt="Nginx"/><br>Nginx</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="44" height="44" alt="Linux"/><br>Linux</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="44" height="44" alt="Git"/><br>Git</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" width="44" height="44" alt="Grafana"/><br>Grafana</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/influxdb/influxdb-original.svg" width="44" height="44" alt="InfluxDB"/><br>InfluxDB</td>
+    <td align="center" width="92"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" width="44" height="44" alt="Arduino"/><br>Arduino</td>
+  </tr>
+</table>
 
 </div>
 
@@ -91,35 +77,14 @@ Embedded Devices → Backend APIs → Databases → Telemetry → Security
 
 ## How My Projects Fit Together
 
-```text
-┌──────────────┐
-│ Edge Devices │
-│ ESP32 / IoT  │
-└──────┬───────┘
-       │
-       ▼
-┌──────────────┐
-│ LoRaWAN      │
-│ Node-RED     │
-└──────┬───────┘
-       │
-       ▼
-┌──────────────┐
-│ Backend APIs │
-│ Rust / Axum  │
-└──────┬───────┘
-       │
-       ▼
-┌──────────────────────────┐
-│ PostgreSQL / MongoDB     │
-│ MySQL / Redis            │
-└──────┬───────────────────┘
-       │
-       ▼
-┌──────────────────────────┐
-│ InfluxDB / Grafana       │
-│ Monitoring & Telemetry   │
-└──────────────────────────┘
+Most of what I build is a slice of one bigger idea: getting data out of the physical world and into something I can store, watch, and secure. My projects line up along that path — sensors on one end, dashboards on the other.
+
+```mermaid
+flowchart LR
+    A["Edge devices<br/>ESP32 · sensors"] --> B["Connectivity<br/>LoRaWAN · MQTT"]
+    B --> C["Backend APIs<br/>Rust · Axum · Node"]
+    C --> D["Data stores<br/>PostgreSQL · MongoDB · Redis"]
+    D --> E["Telemetry<br/>InfluxDB · Grafana"]
 ```
 
 ---
@@ -128,6 +93,21 @@ Embedded Devices → Backend APIs → Databases → Telemetry → Security
 
 <table>
 <tr>
+<td width="50%" valign="top">
+
+### Auth-Lab — Zero-Trust Authentication
+
+Zero-trust authentication backend with TOTP MFA, JWT rotation & replay protection, GeoIP impossible-travel detection, and a defensive attack simulator that CI-verifies the defenses.
+
+<img src="https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white"/>
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white"/>
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/Security-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+
+[**→ View repository**](https://github.com/zr00t-1001/auth-lab)
+
+</td>
 <td width="50%" valign="top">
 
 ### Arch Linux Hardened Server
@@ -141,23 +121,24 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 [**→ View repository**](https://github.com/zr00t-1001/arch-linux-hardened-server)
 
 </td>
+</tr>
+
+<tr>
 <td width="50%" valign="top">
 
 ### API IoT
 
-Backend API for IoT systems: device communication, telemetry processing, and data persistence.
+End-to-end IoT temperature & humidity monitor: ESP32 + DHT22 firmware publishing over MQTT to a Node.js/Express backend and a real-time React dashboard.
 
-<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
-<img src="https://img.shields.io/badge/Axum-111111?style=flat-square"/>
-<img src="https://img.shields.io/badge/IoT-E7352C?style=flat-square"/>
-<img src="https://img.shields.io/badge/API-3FB950?style=flat-square"/>
+<img src="https://img.shields.io/badge/ESP32-E7352C?style=flat-square"/>
+<img src="https://img.shields.io/badge/Arduino_(.ino)-00979D?style=flat-square&logo=arduino&logoColor=white"/>
+<img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
+<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"/>
 
 [**→ View repository**](https://github.com/zr00t-1001/api_iot)
 
 </td>
-</tr>
-
-<tr>
 <td width="50%" valign="top">
 
 ### Eastron LoRaWAN Energy Monitoring
@@ -172,6 +153,9 @@ Energy monitoring over LoRaWAN: collecting, processing, and visualizing electric
 [**→ View repository**](https://github.com/zr00t-1001/eastron-lorawan-energy-monitoring)
 
 </td>
+</tr>
+
+<tr>
 <td width="50%" valign="top">
 
 ### SmartWatch LoRaWAN
@@ -186,9 +170,6 @@ Wearable IoT project using LoRaWAN, embedded sensors, and remote monitoring.
 [**→ View repository**](https://github.com/zr00t-1001/Proyecto_IoT_J3_SmartWatch_LoRaWAN)
 
 </td>
-</tr>
-
-<tr>
 <td width="50%" valign="top">
 
 ### Snake HD
@@ -202,19 +183,24 @@ Modern Snake game built around game logic, rendering, and desktop interaction.
 [**→ View repository**](https://github.com/zr00t-1001/snake-hd)
 
 </td>
+</tr>
+
+<tr>
 <td width="50%" valign="top">
 
-### Crypto Dashboard
+### Crypto·Watch Dashboard
 
-Cryptocurrency dashboard for market visualization, data fetching, and interactive monitoring.
+Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices over WebSockets to an Astro + React dashboard, with PostgreSQL persistence and a full Docker stack.
 
-<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/>
-<img src="https://img.shields.io/badge/Dashboard-3FB950?style=flat-square"/>
+<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
+<img src="https://img.shields.io/badge/Astro-FF5D01?style=flat-square&logo=astro&logoColor=white"/>
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white"/>
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
 
 [**→ View repository**](https://github.com/zr00t-1001/crypto-dashboard)
 
+</td>
+<td width="50%" valign="top">
 </td>
 </tr>
 </table>
@@ -224,27 +210,24 @@ Cryptocurrency dashboard for market visualization, data fetching, and interactiv
 ## What I'm Learning Right Now
 
 ```rust
-struct Student {
+struct Developer {
     name: &'static str,
-    studying: &'static str,
-    learning: [&'static str; 4],
+    focus: [&'static str; 4],
+    currently_building: &'static str,
     coffee_dependency: bool,
 }
 
-let zoel = Student {
-    name: "Zoel Arias",
-    studying: "DAW — Desarrollo de Aplicaciones Web",
-    learning: [
+let zoel = Developer {
+    name: "Zoel Arias Manchón",
+    focus: [
         "Rust & Axum for backend APIs",
         "IoT with ESP32 & LoRaWAN",
-        "Linux & basic security",
-        "Databases and telemetry pipelines",
+        "Linux & security fundamentals",
+        "Databases & telemetry pipelines",
     ],
+    currently_building: "connected systems, end to end",
     coffee_dependency: true,
 };
-```
-
----
 
 ## How I Like to Work
 
