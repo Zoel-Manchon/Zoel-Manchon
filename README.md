@@ -4,14 +4,14 @@
 
 <br><br>
 
-<img src="https://komarev.com/ghpvc/?username=zr00t-1001&style=for-the-badge&color=3fb950"/>
+<img src="https://komarev.com/ghpvc/?username=Zoel-Manchon&style=for-the-badge&color=3fb950"/>
 &nbsp;
 <a href="mailto:zroot1001@proton.me">
 <img src="https://img.shields.io/badge/Email-ProtonMail-6D4AFF?style=for-the-badge&logo=protonmail&logoColor=white"/>
 </a>
 &nbsp;
-<a href="https://github.com/zr00t-1001">
-<img src="https://img.shields.io/badge/GitHub-zr00t--1001-181717?style=for-the-badge&logo=github"/>
+<a href="https://github.com/Zoel-Manchon">
+<img src="https://img.shields.io/badge/GitHub-Zoel--Manchon-181717?style=for-the-badge&logo=github"/>
 </a>
 
 </div>
@@ -97,28 +97,30 @@ flowchart LR
 
 ### Auth-Lab — Zero-Trust Authentication
 
-Zero-trust authentication backend with TOTP MFA, JWT rotation & replay protection, GeoIP impossible-travel detection, and a defensive attack simulator that CI-verifies the defenses.
+Zero-trust auth backend: JWT access/refresh with rotation & replay (JTI) protection, mandatory TOTP MFA for admins, a per-request risk engine with GeoIP impossible-travel detection, RBAC and a security-event audit trail. Fronted by an Astro SOC dashboard behind a Caddy TLS proxy, with a defensive attack simulator that CI-verifies the defenses. Optional HashiCorp Vault layer for secrets & dynamic DB credentials.
 
 <img src="https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white"/>
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
 <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white"/>
+<img src="https://img.shields.io/badge/HashiCorp_Vault-FFEC6E?style=flat-square&logo=vault&logoColor=black"/>
 <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/Security-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
 
-[**→ View repository**](https://github.com/zr00t-1001/auth-lab)
+[**→ View repository**](https://github.com/Zoel-Manchon/auth-lab)
 
 </td>
 <td width="50%" valign="top">
 
-### Arch Linux Hardened Server
+### Crypto·Watch Dashboard
 
-Security-focused Arch Linux setup: system hardening, reduced attack surface, and production-ready configuration practices.
+Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices over WebSockets to an Astro + React dashboard, with PostgreSQL persistence and a full Docker stack.
 
-<img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=archlinux&logoColor=white"/>
-<img src="https://img.shields.io/badge/Security-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
-<img src="https://img.shields.io/badge/Infrastructure-3FB950?style=flat-square"/>
+<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
+<img src="https://img.shields.io/badge/Astro-FF5D01?style=flat-square&logo=astro&logoColor=white"/>
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white"/>
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
 
-[**→ View repository**](https://github.com/zr00t-1001/arch-linux-hardened-server)
+[**→ View repository**](https://github.com/Zoel-Manchon/crypto-dashboard)
 
 </td>
 </tr>
@@ -136,7 +138,7 @@ End-to-end IoT temperature & humidity monitor: ESP32 + DHT22 firmware publishing
 <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/>
 <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"/>
 
-[**→ View repository**](https://github.com/zr00t-1001/api_iot)
+[**→ View repository**](https://github.com/Zoel-Manchon/api_iot)
 
 </td>
 <td width="50%" valign="top">
@@ -150,7 +152,7 @@ Energy monitoring over LoRaWAN: collecting, processing, and visualizing electric
 <img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
 <img src="https://img.shields.io/badge/Telemetry-3FB950?style=flat-square"/>
 
-[**→ View repository**](https://github.com/zr00t-1001/eastron-lorawan-energy-monitoring)
+[**→ View repository**](https://github.com/Zoel-Manchon/eastron-lorawan-energy-monitoring)
 
 </td>
 </tr>
@@ -167,9 +169,25 @@ Wearable IoT project using LoRaWAN, embedded sensors, and remote monitoring.
 <img src="https://img.shields.io/badge/Embedded-111111?style=flat-square"/>
 <img src="https://img.shields.io/badge/Wearable_IoT-3FB950?style=flat-square"/>
 
-[**→ View repository**](https://github.com/zr00t-1001/Proyecto_IoT_J3_SmartWatch_LoRaWAN)
+[**→ View repository**](https://github.com/Zoel-Manchon/Proyecto_IoT_J3_SmartWatch_LoRaWAN)
 
 </td>
+<td width="50%" valign="top">
+
+### Arch Linux Hardened Server
+
+Security-focused Arch Linux setup: system hardening, reduced attack surface, and production-ready configuration practices.
+
+<img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=archlinux&logoColor=white"/>
+<img src="https://img.shields.io/badge/Security-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/Infrastructure-3FB950?style=flat-square"/>
+
+[**→ View repository**](https://github.com/Zoel-Manchon/arch-linux-hardened-server)
+
+</td>
+</tr>
+
+<tr>
 <td width="50%" valign="top">
 
 ### Snake HD
@@ -180,27 +198,50 @@ Modern Snake game built around game logic, rendering, and desktop interaction.
 <img src="https://img.shields.io/badge/Pygame-000000?style=flat-square"/>
 <img src="https://img.shields.io/badge/Game_Dev-3FB950?style=flat-square"/>
 
-[**→ View repository**](https://github.com/zr00t-1001/snake-hd)
+[**→ View repository**](https://github.com/Zoel-Manchon/snake-hd)
 
 </td>
+<td width="50%" valign="top">
+</td>
 </tr>
+</table>
 
+---
+
+## Currently Building
+
+> Work in progress — repo and link will go live once it ships.
+
+<table>
 <tr>
 <td width="50%" valign="top">
 
-### Crypto·Watch Dashboard
+### Zero-Trust Auth Engine — Rust
 
-Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices over WebSockets to an Astro + React dashboard, with PostgreSQL persistence and a full Docker stack.
+A separate, ground-up zero-trust auth service in Rust/Axum (distinct from the NestJS Auth-Lab above). Token issuance & rotation with an attack simulator to validate the defenses, Redis for sessions & rate limiting, PostgreSQL persistence, and HashiCorp Vault for secrets — containerized for deployment.
 
+<img src="https://img.shields.io/badge/Status-In_Progress-FFA500?style=flat-square"/>
 <img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
-<img src="https://img.shields.io/badge/Astro-FF5D01?style=flat-square&logo=astro&logoColor=white"/>
+<img src="https://img.shields.io/badge/Axum-000000?style=flat-square"/>
 <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white"/>
+<img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white"/>
+<img src="https://img.shields.io/badge/HashiCorp_Vault-FFEC6E?style=flat-square&logo=vault&logoColor=black"/>
 <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
-
-[**→ View repository**](https://github.com/zr00t-1001/crypto-dashboard)
 
 </td>
 <td width="50%" valign="top">
+
+### Solar Weather Station — LoRa
+
+Self-powered ESP32 weather station: BME280, BH1750, PMS5003 (PM1.0/2.5/10) and a rain sensor reporting over LoRa P2P to an ESP32 gateway, then MQTT → Home Assistant / Node-RED → InfluxDB → Grafana. Runs on an 18650 cell with a small solar panel.
+
+<img src="https://img.shields.io/badge/Status-In_Progress-FFA500?style=flat-square"/>
+<img src="https://img.shields.io/badge/ESP32-E7352C?style=flat-square"/>
+<img src="https://img.shields.io/badge/LoRa-0055FF?style=flat-square"/>
+<img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
+<img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
+<img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
+
 </td>
 </tr>
 </table>
@@ -228,6 +269,7 @@ let zoel = Developer {
     currently_building: "connected systems, end to end",
     coffee_dependency: true,
 };
+```
 
 ## How I Like to Work
 
