@@ -95,6 +95,24 @@ flowchart LR
 <tr>
 <td width="50%" valign="top">
 
+### Aegis — Zero-Trust Auth Lab & Attack Range
+
+Ground-up zero-trust identity provider in Rust/Axum with a built-in Security Operations Console. JWT (RS256) with refresh rotation & replay (JTI) detection, mandatory TOTP MFA for admins, a per-request risk engine with GeoIP impossible-travel detection, RBAC, and a hash-chained (tamper-evident) audit trail. A React SOC console streams events live (SSE) with WebSocket alert popups and a geo-map, plus a built-in attack range (10 scenarios + storm) to launch attacks and watch the detections fire. Dockerized behind a Caddy single-origin proxy, with optional HashiCorp Vault dynamic DB credentials.
+
+<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
+<img src="https://img.shields.io/badge/Axum-000000?style=flat-square"/>
+<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"/>
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white"/>
+<img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white"/>
+<img src="https://img.shields.io/badge/HashiCorp_Vault-FFEC6E?style=flat-square&logo=vault&logoColor=black"/>
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/Security-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+
+[**→ View repository**](https://github.com/Zoel-Manchon/aegis-zero-trust)
+
+</td>
+<td width="50%" valign="top">
+
 ### Auth-Lab — Zero-Trust Authentication
 
 Zero-trust auth backend: JWT access/refresh with rotation & replay (JTI) protection, mandatory TOTP MFA for admins, a per-request risk engine with GeoIP impossible-travel detection, RBAC and a security-event audit trail. Fronted by an Astro SOC dashboard behind a Caddy TLS proxy, with a defensive attack simulator that CI-verifies the defenses. Optional HashiCorp Vault layer for secrets & dynamic DB credentials.
@@ -109,6 +127,9 @@ Zero-trust auth backend: JWT access/refresh with rotation & replay (JTI) protect
 [**→ View repository**](https://github.com/Zoel-Manchon/auth-lab)
 
 </td>
+</tr>
+
+<tr>
 <td width="50%" valign="top">
 
 ### Crypto·Watch Dashboard
@@ -123,9 +144,6 @@ Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices ove
 [**→ View repository**](https://github.com/Zoel-Manchon/crypto-dashboard)
 
 </td>
-</tr>
-
-<tr>
 <td width="50%" valign="top">
 
 ### API IoT
@@ -141,6 +159,9 @@ End-to-end IoT temperature & humidity monitor: ESP32 + DHT22 firmware publishing
 [**→ View repository**](https://github.com/Zoel-Manchon/api_iot)
 
 </td>
+</tr>
+
+<tr>
 <td width="50%" valign="top">
 
 ### Eastron LoRaWAN Energy Monitoring
@@ -155,9 +176,6 @@ Energy monitoring over LoRaWAN: collecting, processing, and visualizing electric
 [**→ View repository**](https://github.com/Zoel-Manchon/eastron-lorawan-energy-monitoring)
 
 </td>
-</tr>
-
-<tr>
 <td width="50%" valign="top">
 
 ### SmartWatch LoRaWAN
@@ -172,6 +190,9 @@ Wearable IoT project using LoRaWAN, embedded sensors, and remote monitoring.
 [**→ View repository**](https://github.com/Zoel-Manchon/Proyecto_IoT_J3_SmartWatch_LoRaWAN)
 
 </td>
+</tr>
+
+<tr>
 <td width="50%" valign="top">
 
 ### Arch Linux Hardened Server
@@ -185,9 +206,6 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 [**→ View repository**](https://github.com/Zoel-Manchon/arch-linux-hardened-server)
 
 </td>
-</tr>
-
-<tr>
 <td width="50%" valign="top">
 
 ### Snake HD
@@ -200,8 +218,6 @@ Modern Snake game built around game logic, rendering, and desktop interaction.
 
 [**→ View repository**](https://github.com/Zoel-Manchon/snake-hd)
 
-</td>
-<td width="50%" valign="top">
 </td>
 </tr>
 </table>
@@ -216,21 +232,6 @@ Modern Snake game built around game logic, rendering, and desktop interaction.
 <tr>
 <td width="50%" valign="top">
 
-### Zero-Trust Auth Engine — Rust
-
-A separate, ground-up zero-trust auth service in Rust/Axum (distinct from the NestJS Auth-Lab above). Token issuance & rotation with an attack simulator to validate the defenses, Redis for sessions & rate limiting, PostgreSQL persistence, and HashiCorp Vault for secrets — containerized for deployment.
-
-<img src="https://img.shields.io/badge/Status-In_Progress-FFA500?style=flat-square"/>
-<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
-<img src="https://img.shields.io/badge/Axum-000000?style=flat-square"/>
-<img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white"/>
-<img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white"/>
-<img src="https://img.shields.io/badge/HashiCorp_Vault-FFEC6E?style=flat-square&logo=vault&logoColor=black"/>
-<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
-
-</td>
-<td width="50%" valign="top">
-
 ### Solar Weather Station — LoRa
 
 Self-powered ESP32 weather station: BME280, BH1750, PMS5003 (PM1.0/2.5/10) and a rain sensor reporting over LoRa P2P to an ESP32 gateway, then MQTT → Home Assistant / Node-RED → InfluxDB → Grafana. Runs on an 18650 cell with a small solar panel.
@@ -242,6 +243,8 @@ Self-powered ESP32 weather station: BME280, BH1750, PMS5003 (PM1.0/2.5/10) and a
 <img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
 <img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
 
+</td>
+<td width="50%" valign="top">
 </td>
 </tr>
 </table>
