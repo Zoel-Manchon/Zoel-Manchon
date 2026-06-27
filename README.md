@@ -220,6 +220,28 @@ Modern Snake game built around game logic, rendering, and desktop interaction.
 
 </td>
 </tr>
+
+<tr>
+<td width="50%" valign="top">
+
+### Pyscan — Modular Port & OT Scanner
+
+A tiny modular network scanner built in Python: async TCP connect scanning, banner grabbing, service/version fingerprinting, CIDR host discovery, JSON/table output, and read-only OT protocol identification for Modbus/TCP lab environments. Designed with a clean hexagonal architecture so new scan strategies, discovery methods, and output formats can be added without changing the core engine.
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/AsyncIO-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/Typer-000000?style=flat-square"/>
+<img src="https://img.shields.io/badge/Rich-3FB950?style=flat-square"/>
+<img src="https://img.shields.io/badge/Modbus-0055FF?style=flat-square"/>
+<img src="https://img.shields.io/badge/OT_Security-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/Clean_Architecture-3FB950?style=flat-square"/>
+
+[**→ View repository**](https://github.com/Zoel-Manchon/pyscan)
+
+</td>
+</tr>
+
 </table>
 
 ---
