@@ -1,0 +1,48 @@
+<svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" role="img" aria-label="Spec card for zoel@manchon — role: backend, iot and security developer; focus: rust apis, zero-trust, telemetry; editor: alacritty, tmux, nvim; languages: rust, python, typescript, php; api: axum, node, nestjs, laravel; data: postgres, redis, mongo, influx; infra: docker, nginx, linux, grafana; edge: esp32, arduino, lora, mqtt.">
+  <defs>
+    <style>
+      .k   { fill:#3fb950; font-size:13px; }
+      .v   { fill:#c9d1d9; font-size:13px; }
+      .hdr { fill:#3fb950; font-size:13px; font-weight:700; }
+      .dim { fill:#7d8590; font-size:13px; }
+      .tag { fill:#7d8590; font-size:11px; letter-spacing:3px; }
+    </style>
+  </defs>
+
+  <!-- card -->
+  <rect x="1" y="1" width="878" height="298" rx="12" fill="#0d1117" stroke="#30363d"/>
+  <!-- left accent -->
+  <rect x="1" y="1" width="4" height="298" rx="2" fill="#3fb950" opacity="0.55"/>
+
+  <!-- ===== logo: hexagon prompt (a nod to the hexagonal architecture you favor) ===== -->
+  <polygon points="102,88 145,113 145,163 102,188 59,163 59,113"
+           fill="none" stroke="#3fb950" stroke-width="1.8" opacity="0.9"/>
+  <polygon points="102,88 145,113 145,163 102,188 59,163 59,113"
+           fill="#3fb950" opacity="0.05"/>
+  <path d="M88,127 L104,138 L88,149" fill="none" stroke="#3fb950" stroke-width="3.4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="110" y="130" width="10" height="18" fill="#3fb950">
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1.06s" repeatCount="indefinite"/>
+  </rect>
+  <text x="102" y="216" text-anchor="middle" class="tag">ZOEL · MANCHÓN</text>
+
+  <!-- divider -->
+  <line x1="200" y1="40" x2="200" y2="260" stroke="#21262d"/>
+
+  <!-- ===== header ===== -->
+  <text x="232" y="50" class="hdr">zoel@manchon</text>
+  <text x="352" y="50" class="dim">: ~/.config/whoami</text>
+  <line x1="232" y1="62" x2="840" y2="62" stroke="#21262d"/>
+
+  <!-- ===== spec rows (x positions guarantee alignment in any font) ===== -->
+  <g>
+    <text x="232" y="92"  class="k">role</text>   <text x="320" y="92"  class="v">backend · iot · security developer</text>
+    <text x="232" y="116" class="k">focus</text>  <text x="320" y="116" class="v">rust apis · zero-trust · telemetry</text>
+    <text x="232" y="140" class="k">editor</text> <text x="320" y="140" class="v">alacritty · tmux · nvim</text>
+    <text x="232" y="164" class="k">lang</text>   <text x="320" y="164" class="v">rust · python · typescript · php</text>
+    <text x="232" y="188" class="k">api</text>    <text x="320" y="188" class="v">axum · node · nestjs · laravel</text>
+    <text x="232" y="212" class="k">data</text>   <text x="320" y="212" class="v">postgres · redis · mongo · influx</text>
+    <text x="232" y="236" class="k">infra</text>  <text x="320" y="236" class="v">docker · nginx · linux · grafana</text>
+    <text x="232" y="260" class="k">edge</text>   <text x="320" y="260" class="v">esp32 · arduino · lora · mqtt</text>
+  </g>
+</svg>
