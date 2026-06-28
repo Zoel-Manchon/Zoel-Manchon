@@ -1,7 +1,4 @@
 <div align="center">
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=28&duration=2500&pause=800&color=3FB950&center=true&vCenter=true&width=950&lines=root%40zr00t%3A~%24+whoami;Backend+%7C+IoT+%7C+Security;From+ESP32+sensors+to+Rust+APIs;Learning+by+building+real+projects;ESP32+%E2%86%92+APIs+%E2%86%92+Telemetry" />
-
-<br><br>
 
 <img src="https://komarev.com/ghpvc/?username=Zoel-Manchon&style=for-the-badge&color=3fb950"/>
 &nbsp;
