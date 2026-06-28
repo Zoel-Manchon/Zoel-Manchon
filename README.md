@@ -1,19 +1,22 @@
 <div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=28&duration=2500&pause=800&color=3FB950&center=true&vCenter=true&width=950&lines=root%40zr00t%3A~%24+whoami;Backend+%7C+IoT+%7C+Security;From+ESP32+sensors+to+Rust+APIs;Learning+by+building+real+projects;ESP32+%E2%86%92+APIs+%E2%86%92+Telemetry" />
 
+<br><br>
+
+<img src="https://komarev.com/ghpvc/?username=Zoel-Manchon&style=for-the-badge&color=3fb950"/>
+&nbsp;
+<a href="mailto:zroot1001@proton.me">
+<img src="https://img.shields.io/badge/Email-ProtonMail-6D4AFF?style=for-the-badge&logo=protonmail&logoColor=white"/>
+</a>
+&nbsp;
+<a href="https://github.com/Zoel-Manchon">
+<img src="https://img.shields.io/badge/GitHub-Zoel--Manchon-181717?style=for-the-badge&logo=github"/>
+</a>
+
+</br>
+</br>
 <img src="https://raw.githubusercontent.com/Zoel-Manchon/Zoel-Manchon/main/assets/pipeline.svg" width="100%" alt="Animated terminal panel: data flowing through Zoel's pipeline — edge sensors, link, backend, store, telemetry — with a security layer scanning across every stage." />
-
 <br/>
-
-**`backend · iot · security`**
-
-I build systems that carry data from physical-world sensors to storage, dashboards, and access control.
-
-<a href="mailto:zroot1001@proton.me"><img src="https://img.shields.io/badge/Email-ProtonMail-6D4AFF?style=flat-square&logo=protonmail&logoColor=white"/></a>
-&nbsp;
-<a href="https://github.com/Zoel-Manchon"><img src="https://img.shields.io/badge/GitHub-Zoel--Manchon-3FB950?style=flat-square&logo=github&logoColor=white"/></a>
-&nbsp;
-<img src="https://komarev.com/ghpvc/?username=Zoel-Manchon&style=flat-square&color=3fb950&label=visitors"/>
-
 </div>
 
 <br/>
