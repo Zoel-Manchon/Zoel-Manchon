@@ -206,11 +206,12 @@ Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices ove
 <td width="50%" valign="top">
 
 #### Snake HD
-
-A Nokia-era classic rebuilt as a polished arcade game: HD rendering, custom pixel-art sprites, combo multiplier, power-ups, sound, screen shake, and persistent high scores.
+A Nokia-era classic rebuilt as a polished arcade game: HD rendering, custom pixel-art sprites, combo multiplier, power-ups, sound, screen shake, and a SHA-256 tamper-evident leaderboard backed by a Rust/Axum service.
 
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
 <img src="https://img.shields.io/badge/Pygame-000000?style=flat-square"/>
+<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
+<img src="https://img.shields.io/badge/Axum-000000?style=flat-square"/>
 <img src="https://img.shields.io/badge/Game_Dev-3FB950?style=flat-square"/>
 
 [**→ repository**](https://github.com/Zoel-Manchon/snake-hd)
