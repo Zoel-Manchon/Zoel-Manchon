@@ -34,7 +34,7 @@ I learn by building real connected systems — sensors on one end, secured data 
 
 ```bash
 ~/projects
-├── cybersecurity/   # zero-trust auth, scanners, hardening
+├── cybersecurity/   # secrets vault, zero-trust auth, scanners, hardening
 ├── iot/             # esp32, lora, telemetry pipelines
 ├── backend/         # real-time services
 └── games/           # because why not
@@ -44,6 +44,22 @@ I learn by building real connected systems — sensors on one end, secured data 
 
 <table>
 <tr>
+<td width="50%" valign="top">
+
+#### AegisVault — Encrypted Secrets Vault (Python + Rust)
+
+Local-first, zero-knowledge secrets manager built on DDD + hexagonal architecture: a Python domain core with a native **Rust crypto engine** (Argon2id + XChaCha20-Poly1305 + zeroize via PyO3). Envelope encryption with **Shamir K-of-N recovery**, master-password rotation, TOTP/2FA, a **tamper-evident hash-chained audit ledger** with SIEM export (CEF/syslog/JSON), HIBP breach checks via k-anonymity, X25519 public-key team sharing with revocation, secret injection for DevOps (`run -- <cmd>`), an auto-locking agent daemon, and a PySide6 desktop GUI with its own design system. 96 tests across two swappable crypto backends.
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
+<img src="https://img.shields.io/badge/PyO3-0B7261?style=flat-square"/>
+<img src="https://img.shields.io/badge/PySide6-41CD52?style=flat-square&logo=qt&logoColor=white"/>
+<img src="https://img.shields.io/badge/XChaCha20--Poly1305-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white"/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/aegisvault)
+
+</td>
 <td width="50%" valign="top">
 
 #### Aegis — Zero-Trust Auth Lab & Attack Range
@@ -60,6 +76,9 @@ Ground-up zero-trust identity provider in Rust/Axum with a built-in Security Ope
 [**→ repository**](https://github.com/Zoel-Manchon/aegis-zero-trust)
 
 </td>
+</tr>
+
+<tr>
 <td width="50%" valign="top">
 
 #### Auth-Lab — Zero-Trust Authentication
@@ -75,9 +94,6 @@ Zero-trust auth backend: JWT access/refresh with rotation & replay (JTI) protect
 [**→ repository**](https://github.com/Zoel-Manchon/auth-lab)
 
 </td>
-</tr>
-
-<tr>
 <td width="50%" valign="top">
 
 #### Pyscan — Modular Port & OT Scanner
@@ -93,6 +109,9 @@ A tiny modular network scanner in Python: async TCP connect scanning, banner gra
 [**→ repository**](https://github.com/Zoel-Manchon/pyscan)
 
 </td>
+</tr>
+
+<tr>
 <td width="50%" valign="top">
 
 #### Arch Linux Hardened Server
@@ -105,6 +124,8 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 
 [**→ repository**](https://github.com/Zoel-Manchon/arch-linux-hardened-server)
 
+</td>
+<td width="50%" valign="top">
 </td>
 </tr>
 </table>
