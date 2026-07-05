@@ -26,7 +26,7 @@
 
 </div>
 
-I learn by building real connected systems — sensors on one end, secured data on the other. The pipeline above isn't a metaphor; it's the shape of most things in here.
+I learn by building real systems end to end — edge sensors, secured services, real-time backends, and analytical tools. The pipeline above isn't a metaphor; it's the shape of most things in here.
 
 <br/>
 
@@ -36,6 +36,7 @@ I learn by building real connected systems — sensors on one end, secured data 
 ~/projects
 ├── cybersecurity/   # secrets vault, zero-trust auth, scanners, hardening
 ├── iot/             # esp32, lora, telemetry pipelines
+├── quant/           # backtesting engines, trading analytics
 ├── backend/         # real-time services
 └── games/           # because why not
 ```
@@ -192,6 +193,31 @@ Self-powered ESP32 station: BME280, BH1750, PMS5003 and a rain sensor reporting 
 <img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
 <img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
 
+</td>
+</tr>
+</table>
+
+### `~/quant`
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+#### QuantLab — Backtesting Engine
+
+Python trading backtesting engine built with DDD + hexagonal architecture: a rich domain core with `Portfolio` invariants for cash, margin and position crossing, `Order` entities for MARKET/LIMIT/STOP execution, automatic stop-loss / take-profit groups with OCO behavior, short selling support, walk-forward analysis, SQLite persistence, and performance analytics such as Sharpe, Sortino, profit factor and expectancy. One core exposed through CLI, Textual TUI and PySide6 desktop GUI, with CI checks using ruff, mypy and pytest.
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/DDD-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/Textual-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/PySide6-41CD52?style=flat-square&logo=qt&logoColor=white"/>
+<img src="https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white"/>
+<img src="https://img.shields.io/badge/Backtesting-3FB950?style=flat-square"/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/quantlab)
+
+</td>
+<td width="50%" valign="top">
 </td>
 </tr>
 </table>
