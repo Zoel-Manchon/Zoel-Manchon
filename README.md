@@ -183,15 +183,18 @@ Wearable IoT project using LoRaWAN, embedded sensors, and remote monitoring.
 </td>
 <td width="50%" valign="top">
 
-#### Solar Weather Station &nbsp;·&nbsp; `WIP`
+#### Solar Weather Station — Simulation-First IoT
 
-Self-powered ESP32 station: BME280, BH1750, PMS5003 and a rain sensor reporting over LoRa P2P to a gateway, then MQTT → Home Assistant / Node-RED → InfluxDB → Grafana. Runs on an 18650 cell and a small solar panel.
+Solar-powered weather-station architecture developed **simulation first**. A coherent virtual weather world drives simulated BME280, BH1750, PMS5003 and rain sensors, reproducing daylight cycles, pressure fronts, rainfall, humidity changes, particulate scrubbing, solar charging and battery behavior. Telemetry flows over MQTT through Node-RED into InfluxDB and Grafana, while the hexagonal, MicroPython-ready core keeps the future ESP32 + LoRa hardware integration isolated to adapter changes.
 
-<img src="https://img.shields.io/badge/Status-In_Progress-FFA500?style=flat-square"/>
-<img src="https://img.shields.io/badge/ESP32-E7352C?style=flat-square"/>
-<img src="https://img.shields.io/badge/LoRa-0055FF?style=flat-square"/>
+<img src="https://img.shields.io/badge/Status-Simulation_Ready-3FB950?style=flat-square"/>
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/Architecture-Hexagonal-111111?style=flat-square"/>
 <img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
+<img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
 <img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/solar-weather-station)
 
 </td>
 </tr>
@@ -253,6 +256,7 @@ Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices ove
 <td width="50%" valign="top">
 
 #### Snake HD
+
 A Nokia-era classic rebuilt as a polished arcade game: HD rendering, custom pixel-art sprites, combo multiplier, power-ups, sound, screen shake, and a SHA-256 tamper-evident leaderboard backed by a Rust/Axum service.
 
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
@@ -284,3 +288,4 @@ $ cat ~/.principles
 **From edge devices to secured data — still learning, still building.**
 
 </div>
+::: ​​
