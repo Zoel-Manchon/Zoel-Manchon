@@ -35,7 +35,7 @@ I learn by building real systems end to end — edge sensors, secured services, 
 ```bash
 ~/projects
 ├── cybersecurity/   # secrets vault, zero-trust auth, scanners, hardening
-├── iot/             # esp32, lora, telemetry pipelines
+├── iot/             # esp32, lora, edge-ml, telemetry pipelines
 ├── quant/           # backtesting engines, trading analytics
 ├── backend/         # real-time services
 └── games/           # because why not
@@ -133,13 +133,81 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 
 ### `~/iot`
 
+> **Simulation-first IoT.** I build these pipelines against coherent *virtual
+> worlds* before the hardware arrives — so the full edge→broker→TSDB→dashboard
+> path is testable on day one, and the ESP32/LoRa integration stays isolated to
+> adapter swaps. Hexagonal cores, MicroPython-ready, enforced by architecture
+> fitness tests.
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+#### 🛡️ Sentinel Node — Multi-Sensor Edge Sentinel
+
+Space-monitoring node fusing **air quality (BME680)**, **mmWave human presence
+(LD2410)**, and **on-device ML** for acoustic events (INMP441 + TinyML) and
+vision (ESP32-CAM). Its hexagonal core models two kinds of observation on
+purpose — scalar `Measurement`s and discrete `Event`s from edge models — so
+**raw audio and images never enter the telemetry frame**: the classifier runs
+on-device and only the verdict is published (camera JPEGs saved out-of-band,
+served via a Node-RED gallery). A coherent simulated space drives every channel
+from one occupancy schedule; MQTT → Node-RED → InfluxDB → Grafana. 45 tests
+incl. architecture fitness functions. Roadmap: real sensors, TLS/mTLS,
+signed frames.
+
+<img src="https://img.shields.io/badge/ESP32--S3-E7352C?style=flat-square"/>
+<img src="https://img.shields.io/badge/Edge_ML-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/mmWave_LD2410-0055FF?style=flat-square"/>
+<img src="https://img.shields.io/badge/Architecture-Hexagonal-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
+<img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
+<img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/sentinel-node)
+
+</td>
+<td width="50%" valign="top">
+
+#### ☀️ Solar Weather Station — Simulation-First IoT
+
+Solar-powered weather-station architecture developed **simulation first**. A
+coherent virtual weather world drives simulated BME280, BH1750, PMS5003 and
+rain sensors, reproducing daylight cycles, pressure fronts, rainfall, humidity
+changes, particulate scrubbing, solar charging and battery behavior. Telemetry
+flows over MQTT through Node-RED into InfluxDB and Grafana, while the hexagonal,
+MicroPython-ready core keeps the future ESP32 + LoRa hardware integration
+isolated to adapter changes.
+
+<img src="https://img.shields.io/badge/Status-Simulation_Ready-3FB950?style=flat-square"/>
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/Architecture-Hexagonal-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
+<img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
+<img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/solar-weather-station)
+
+</td>
+</tr>
+</table>
+
+<details>
+<summary><b>▸ Sentinel Node — live dashboard & camera gallery</b></summary>
+<br/>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/sentinel-node/main/docs/screenshots/demo.gif" width="100%" alt="Sentinel Node live: a simulated day of occupancy, air quality and a scripted acoustic anomaly streaming into Grafana."/>
+</div>
+</details>
+
 <table>
 <tr>
 <td width="50%" valign="top">
 
 #### API IoT
 
-End-to-end temperature & humidity monitor: ESP32 + DHT22 firmware publishing over MQTT to a Node.js/Express backend and a real-time React dashboard.
+End-to-end temperature & humidity monitor: ESP32 + DHT22 firmware publishing
+over MQTT to a Node.js/Express backend and a real-time React dashboard.
 
 <img src="https://img.shields.io/badge/ESP32-E7352C?style=flat-square"/>
 <img src="https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white"/>
@@ -154,7 +222,8 @@ End-to-end temperature & humidity monitor: ESP32 + DHT22 firmware publishing ove
 
 #### Eastron LoRaWAN Energy Monitoring
 
-Energy monitoring over LoRaWAN: collecting, processing, and visualizing electrical consumption data through an InfluxDB + Grafana telemetry stack.
+Energy monitoring over LoRaWAN: collecting, processing, and visualizing
+electrical consumption data through an InfluxDB + Grafana telemetry stack.
 
 <img src="https://img.shields.io/badge/LoRaWAN-0055FF?style=flat-square"/>
 <img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
@@ -182,20 +251,6 @@ Wearable IoT project using LoRaWAN, embedded sensors, and remote monitoring.
 
 </td>
 <td width="50%" valign="top">
-
-#### Solar Weather Station — Simulation-First IoT
-
-Solar-powered weather-station architecture developed **simulation first**. A coherent virtual weather world drives simulated BME280, BH1750, PMS5003 and rain sensors, reproducing daylight cycles, pressure fronts, rainfall, humidity changes, particulate scrubbing, solar charging and battery behavior. Telemetry flows over MQTT through Node-RED into InfluxDB and Grafana, while the hexagonal, MicroPython-ready core keeps the future ESP32 + LoRa hardware integration isolated to adapter changes.
-
-<img src="https://img.shields.io/badge/Status-Simulation_Ready-3FB950?style=flat-square"/>
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
-<img src="https://img.shields.io/badge/Architecture-Hexagonal-111111?style=flat-square"/>
-<img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
-<img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
-<img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
-
-[**→ repository**](https://github.com/Zoel-Manchon/solar-weather-station)
-
 </td>
 </tr>
 </table>
@@ -288,4 +343,3 @@ $ cat ~/.principles
 **From edge devices to secured data — still learning, still building.**
 
 </div>
-::: ​​
