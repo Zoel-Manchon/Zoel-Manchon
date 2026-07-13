@@ -28,6 +28,12 @@
 
 I learn by building real systems end to end — edge sensors, secured services, real-time backends, and analytical tools. The pipeline above isn't a metaphor; it's the shape of most things in here.
 
+<div align="center">
+
+`AppSec` · `DevSecOps` · `IoT / OT security` — **secure by design, from the sensor to the dashboard.**
+
+</div>
+
 <br/>
 
 ## `$ tree ~/projects`
@@ -35,7 +41,7 @@ I learn by building real systems end to end — edge sensors, secured services, 
 ```bash
 ~/projects
 ├── cybersecurity/   # secrets vault, zero-trust auth, scanners, hardening
-├── iot/             # esp32, lora, edge-ml, telemetry pipelines
+├── iot/             # esp32, lora, edge-ml, secured telemetry pipelines
 ├── quant/           # backtesting engines, trading analytics
 ├── backend/         # real-time services
 └── games/           # because why not
@@ -131,86 +137,160 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 </tr>
 </table>
 
+<details>
+<summary><b>▸ Live demos — attack ranges catching attacks in real time</b></summary>
+<br/>
+<div align="center">
+
+**Aegis** — launch an attack from the SOC console and watch the detections fire
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/aegis-zero-trust/main/docs/attack_simulator.gif" width="100%" alt="Aegis zero-trust attack range: attacks launched, detections firing live in the SOC console."/>
+<br/><br/>
+
+**Auth-Lab** — the attack simulator driving scripted scenarios against the defenses
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/auth-lab/main/docs/diagrams/demo/attack-simulator.gif" width="100%" alt="Auth-Lab attack simulator running scripted attack scenarios with PASS/FAIL verdicts."/>
+<br/><br/>
+
+**Pyscan** — the modular OT/port scanner in action
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/pyscan/main/docs/demo.gif" width="100%" alt="Pyscan modular port and OT-protocol scanner demo."/>
+
+</div>
+</details>
+
 ### `~/iot`
 
-> **Simulation-first IoT.** I build these pipelines against coherent *virtual
-> worlds* before the hardware arrives — so the full edge→broker→TSDB→dashboard
-> path is testable on day one, and the ESP32/LoRa integration stays isolated to
-> adapter swaps. Hexagonal cores, MicroPython-ready, enforced by architecture
-> fitness tests.
+> **Simulation-first IoT.** I build each pipeline against a coherent *virtual world*
+> before any hardware exists — so the full **edge → broker → TSDB → dashboard** path
+> is testable on day one, and the ESP32/LoRa integration stays isolated to adapter
+> swaps. Hexagonal cores, MicroPython-ready, enforced by architecture fitness tests.
+> Three end-to-end pipelines so far, **123 tests** between them, security built in.
+
+<div align="center">
+
+| Pipeline | Domain | Security | Tests | Status |
+|:---|:---|:---|:---:|:---:|
+| **🌾 agrisentinel** | crops · water · livestock | HMAC + anti-replay + anomaly detection | `33` | sim-ready |
+| **🛡️ sentinel-node** | air · presence · edge ML | on-device ML, raw media never leaves | `45` | sim-ready |
+| **☀️ solar-weather-station** | weather · solar power | self-powered edge, LoRa link | `43` | sim-ready |
+
+</div>
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-#### 🛡️ Sentinel Node — Multi-Sensor Edge Sentinel
+#### 🌾 agrisentinel — Secured Rural IoT Lab
 
-Space-monitoring node fusing **air quality (BME680)**, **mmWave human presence
-(LD2410)**, and **on-device ML** for acoustic events (INMP441 + TinyML) and
-vision (ESP32-CAM). Its hexagonal core models two kinds of observation on
-purpose — scalar `Measurement`s and discrete `Event`s from edge models — so
-**raw audio and images never enter the telemetry frame**: the classifier runs
-on-device and only the verdict is published (camera JPEGs saved out-of-band,
-served via a Node-RED gallery). A coherent simulated space drives every channel
-from one occupancy schedule; MQTT → Node-RED → InfluxDB → Grafana. 45 tests
-incl. architecture fitness functions. Roadmap: real sensors, TLS/mTLS,
-signed frames.
+Smart-farm lab across **three domains at once** — crops, water and livestock —
+where the sensor network itself is treated as an attack surface. Every field node
+signs its telemetry with **HMAC + sequence + nonce**; a gateway verifies each frame
+and runs four independent anomaly checks (out-of-range, replay, stale, rate) before
+forwarding only what it trusts. Clean telemetry and security alerts travel on
+separate MQTT streams, feeding **two Grafana dashboards from one pipeline** — an
+agronomy view and a SOC-style security view. Inject a spoof/replay/forged attack
+from the CLI and watch the SOC light up live. Physics is the last line of defence:
+even a stolen key can't report soil moisture at 250%.
 
-<img src="https://img.shields.io/badge/ESP32--S3-E7352C?style=flat-square"/>
-<img src="https://img.shields.io/badge/Edge_ML-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
-<img src="https://img.shields.io/badge/mmWave_LD2410-0055FF?style=flat-square"/>
-<img src="https://img.shields.io/badge/Architecture-Hexagonal-111111?style=flat-square"/>
-<img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
-<img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
-<img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
-
-[**→ repository**](https://github.com/Zoel-Manchon/sentinel-node)
-
-</td>
-<td width="50%" valign="top">
-
-#### ☀️ Solar Weather Station — Simulation-First IoT
-
-Solar-powered weather-station architecture developed **simulation first**. A
-coherent virtual weather world drives simulated BME280, BH1750, PMS5003 and
-rain sensors, reproducing daylight cycles, pressure fronts, rainfall, humidity
-changes, particulate scrubbing, solar charging and battery behavior. Telemetry
-flows over MQTT through Node-RED into InfluxDB and Grafana, while the hexagonal,
-MicroPython-ready core keeps the future ESP32 + LoRa hardware integration
-isolated to adapter changes.
-
-<img src="https://img.shields.io/badge/Status-Simulation_Ready-3FB950?style=flat-square"/>
+<img src="https://img.shields.io/badge/Security-HMAC_+_Anomaly-A32D2D?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
 <img src="https://img.shields.io/badge/Architecture-Hexagonal-111111?style=flat-square"/>
 <img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
 <img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
 <img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
 
-[**→ repository**](https://github.com/Zoel-Manchon/solar-weather-station)
+[**→ repository**](https://github.com/Zoel-Manchon/agrisentinel)
+
+</td>
+<td width="50%" valign="top">
+
+#### 🛡️ sentinel-node — Multi-Sensor Edge Sentinel
+
+Space-monitoring node fusing **air quality (BME680)**, **mmWave human presence
+(LD2410)**, and **on-device ML** for acoustic events (INMP441 + TinyML) and vision
+(ESP32-CAM). Its hexagonal core models two kinds of observation on purpose — scalar
+`Measurement`s and discrete `Event`s from edge models — so **raw audio and images
+never enter the telemetry frame**: the classifier runs on-device and only the
+verdict is published (camera JPEGs saved out-of-band, served via a Node-RED
+gallery). A coherent simulated space drives every channel from one occupancy
+schedule; MQTT → Node-RED → InfluxDB → Grafana.
+
+<img src="https://img.shields.io/badge/ESP32--S3-E7352C?style=flat-square"/>
+<img src="https://img.shields.io/badge/Edge_ML-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/mmWave_LD2410-0055FF?style=flat-square"/>
+<img src="https://img.shields.io/badge/Architecture-Hexagonal-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
+<img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/sentinel-node)
 
 </td>
 </tr>
 </table>
 
+<table>
+<tr>
+<td width="50%" valign="top">
+
+#### ☀️ solar-weather-station — Self-Powered Weather IoT
+
+Solar-powered weather-station architecture developed **simulation first**. A
+coherent virtual weather world drives simulated BME280, BH1750, PMS5003 and rain
+sensors, reproducing daylight cycles, pressure fronts, rainfall, humidity changes,
+particulate scrubbing, solar charging and battery behavior. Telemetry flows over
+MQTT through Node-RED into InfluxDB and Grafana, while the hexagonal,
+MicroPython-ready core keeps the future ESP32 + LoRa hardware integration isolated
+to adapter changes.
+
+<img src="https://img.shields.io/badge/Status-Simulation_Ready-3FB950?style=flat-square"/>
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/Architecture-Hexagonal-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/LoRa-0055FF?style=flat-square"/>
+<img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
+<img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/solar-weather-station)
+
+</td>
+<td width="50%" valign="top">
+</td>
+</tr>
+</table>
+
+> **Why simulation-first?** Building against a virtual world means the whole pipeline — sensors, broker, storage, dashboards, and the security layer — is verified in CI before a single wire is soldered. The domain and application layers are MicroPython-safe, so the move to real ESP32 hardware is a mechanical adapter swap, not a rewrite. Same discipline I apply to backend work: test the contract, isolate the I/O.
+
 <details>
-<summary><b>▸ Sentinel Node — live dashboard & camera gallery</b></summary>
+<summary><b>▸ Live demos — dashboards & a security layer catching an attack</b></summary>
 <br/>
 <div align="center">
-<img src="https://raw.githubusercontent.com/Zoel-Manchon/sentinel-node/main/docs/screenshots/demo.gif" width="100%" alt="Sentinel Node live: a simulated day of occupancy, air quality and a scripted acoustic anomaly streaming into Grafana."/>
+
+**sentinel-node** — occupancy, air quality & a scripted acoustic anomaly
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/sentinel-node/main/docs/screenshots/demo.gif" width="100%" alt="Sentinel Node live dashboard."/>
+<br/><br/>
+
+**agrisentinel** — a spoof attack lighting up the SOC dashboard in real time
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/agrisentinel/main/docs/demo-soc.gif" width="100%" alt="AgriSentinel security dashboard reacting to an injected attack."/>
+<br/><br/>
+
+**solar-weather-station** — a simulated day with a scripted rain event, streamed live
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/solar-weather-station/main/docs/demo.gif" width="100%" alt="Solar weather station: a simulated day with a scripted rain event streaming into Grafana."/>
+
 </div>
 </details>
 
+<br/>
+
+<details>
+<summary><b>▸ More IoT — earlier hardware & LoRaWAN projects</b></summary>
+<br/>
 <table>
 <tr>
 <td width="50%" valign="top">
 
 #### API IoT
 
-End-to-end temperature & humidity monitor: ESP32 + DHT22 firmware publishing
-over MQTT to a Node.js/Express backend and a real-time React dashboard.
+End-to-end temperature & humidity monitor: ESP32 + DHT22 firmware publishing over
+MQTT to a Node.js/Express backend and a real-time React dashboard.
 
 <img src="https://img.shields.io/badge/ESP32-E7352C?style=flat-square"/>
-<img src="https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white"/>
 <img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
 <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/>
 <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"/>
@@ -222,19 +302,17 @@ over MQTT to a Node.js/Express backend and a real-time React dashboard.
 
 #### Eastron LoRaWAN Energy Monitoring
 
-Energy monitoring over LoRaWAN: collecting, processing, and visualizing
-electrical consumption data through an InfluxDB + Grafana telemetry stack.
+Energy monitoring over LoRaWAN: collecting, processing, and visualizing electrical
+consumption data through an InfluxDB + Grafana telemetry stack.
 
 <img src="https://img.shields.io/badge/LoRaWAN-0055FF?style=flat-square"/>
 <img src="https://img.shields.io/badge/InfluxDB-22ADF6?style=flat-square&logo=influxdb&logoColor=white"/>
 <img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
-<img src="https://img.shields.io/badge/Telemetry-3FB950?style=flat-square"/>
 
 [**→ repository**](https://github.com/Zoel-Manchon/eastron-lorawan-energy-monitoring)
 
 </td>
 </tr>
-
 <tr>
 <td width="50%" valign="top">
 
@@ -244,7 +322,6 @@ Wearable IoT project using LoRaWAN, embedded sensors, and remote monitoring.
 
 <img src="https://img.shields.io/badge/ESP32-E7352C?style=flat-square"/>
 <img src="https://img.shields.io/badge/LoRaWAN-0055FF?style=flat-square"/>
-<img src="https://img.shields.io/badge/Embedded-111111?style=flat-square"/>
 <img src="https://img.shields.io/badge/Wearable_IoT-3FB950?style=flat-square"/>
 
 [**→ repository**](https://github.com/Zoel-Manchon/Proyecto_IoT_J3_SmartWatch_LoRaWAN)
@@ -254,6 +331,7 @@ Wearable IoT project using LoRaWAN, embedded sensors, and remote monitoring.
 </td>
 </tr>
 </table>
+</details>
 
 ### `~/quant`
 
@@ -304,6 +382,14 @@ Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices ove
 </tr>
 </table>
 
+<details>
+<summary><b>▸ Live demo — Crypto·Watch terminal</b></summary>
+<br/>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/crypto-dashboard/main/docs/screenshots/terminal.gif" width="100%" alt="Crypto·Watch real-time terminal: live prices, charts, and market analytics."/>
+</div>
+</details>
+
 ### `~/games`
 
 <table>
@@ -327,6 +413,14 @@ A Nokia-era classic rebuilt as a polished arcade game: HD rendering, custom pixe
 </td>
 </tr>
 </table>
+
+<details>
+<summary><b>▸ Live demo — Snake HD</b></summary>
+<br/>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/snake-hd/main/docs/screenshots/snake_hd.gif" width="100%" alt="Snake HD: pixel-art arcade snake with combos, power-ups, and screen shake."/>
+</div>
+</details>
 
 <br/>
 
