@@ -36,10 +36,28 @@ I learn by building real systems end to end — edge sensors, secured services, 
 
 <br/>
 
+<div align="center">
+
+<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
+<img src="https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white"/>
+<img src="https://img.shields.io/badge/Linux-000000?style=flat-square&logo=linux&logoColor=white"/>
+<img src="https://img.shields.io/badge/Buildroot-2E3B4E?style=flat-square"/>
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
+<img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/>
+<img src="https://img.shields.io/badge/Hardening-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+
+</div>
+
+<br/>
+
 ## `$ tree ~/projects`
 
 ```bash
 ~/projects
+├── os/              # emberwall — hardened IoT/OT linux distro (buildroot + rust)
 ├── cybersecurity/   # secrets vault, zero-trust auth, scanners, hardening
 ├── iot/             # esp32, lora, edge-ml, secured telemetry pipelines
 ├── quant/           # backtesting engines, trading analytics
@@ -47,7 +65,44 @@ I learn by building real systems end to end — edge sensors, secured services, 
 └── games/           # because why not
 ```
 
-### `~/cybersecurity`
+<br/>
+
+## `~/os` &nbsp;·&nbsp; ⭐ featured
+
+<div align="center">
+
+### 🔥 Emberwall — Hardened IoT/OT Security Linux
+
+<em>A whole Linux distribution, built from source — where my scanner and my vault become one native Rust binary.</em>
+
+</div>
+
+A **from-scratch Linux distribution** built with **Buildroot** — its own cross-toolchain, a hardened kernel, and a few-MB immutable userland: no package manager, `PIE` / `RELRO` / `SSP` / `FORTIFY`, KASLR, `lockdown` + `yama` LSMs, and an `nftables` default-deny firewall. It ships **`sentinel`**, a native **Rust** tool that unifies my [`pyscan`](https://github.com/Zoel-Manchon/pyscan) scanner and the [`AegisVault`](https://github.com/Zoel-Manchon/aegisvault) crypto core into a single static binary: concurrent **TCP/UDP scanning** with OT/ICS + IoT recognition (Modbus, S7comm, IEC-104, CoAP, LoRaWAN) plus an **argon2id + XChaCha20-Poly1305** secrets vault. Designed to run as the **secure MQTT edge gateway** feeding the IoT pipelines below. Live ISO, workstation and locked-appliance variants for **x86-64 and ARM64**.
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/Buildroot-2E3B4E?style=flat-square"/>
+<img src="https://img.shields.io/badge/Linux-000000?style=flat-square&logo=linux&logoColor=white"/>
+<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
+<img src="https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white"/>
+<img src="https://img.shields.io/badge/Hardening-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/OT_Security-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white"/>
+<img src="https://img.shields.io/badge/QEMU_/_ISO-3FB950?style=flat-square"/>
+
+<br/><br/>
+
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/emberwall/main/docs/demo.gif" width="100%" alt="Emberwall live demo: silent boot, sentinel TCP/UDP/Modbus scan, secrets vault, and MQTT gateway."/>
+
+<br/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/emberwall)
+
+</div>
+
+<br/>
+
+## `~/cybersecurity`
 
 <table>
 <tr>
@@ -63,6 +118,8 @@ Local-first, zero-knowledge secrets manager built on DDD + hexagonal architectur
 <img src="https://img.shields.io/badge/PySide6-41CD52?style=flat-square&logo=qt&logoColor=white"/>
 <img src="https://img.shields.io/badge/XChaCha20--Poly1305-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
 <img src="https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white"/>
+
+> 🔥 Its Rust crypto core lives on as a native binary in [**Emberwall**](https://github.com/Zoel-Manchon/emberwall).
 
 [**→ repository**](https://github.com/Zoel-Manchon/aegisvault)
 
@@ -113,6 +170,8 @@ A tiny modular network scanner in Python: async TCP connect scanning, banner gra
 <img src="https://img.shields.io/badge/Modbus-0055FF?style=flat-square"/>
 <img src="https://img.shields.io/badge/OT_Security-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
 
+> 🔥 Ported to a native Rust `sentinel scan` inside [**Emberwall**](https://github.com/Zoel-Manchon/emberwall).
+
 [**→ repository**](https://github.com/Zoel-Manchon/pyscan)
 
 </td>
@@ -142,6 +201,10 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 <br/>
 <div align="center">
 
+**Emberwall** — the hardened distro booting, `sentinel` scanning & the vault, all live
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/emberwall/main/docs/demo.gif" width="100%" alt="Emberwall live demo: silent boot, sentinel TCP/UDP/Modbus scan, secrets vault, and MQTT gateway."/>
+<br/><br/>
+
 **Aegis** — launch an attack from the SOC console and watch the detections fire
 <img src="https://raw.githubusercontent.com/Zoel-Manchon/aegis-zero-trust/main/docs/attack_simulator.gif" width="100%" alt="Aegis zero-trust attack range: attacks launched, detections firing live in the SOC console."/>
 <br/><br/>
@@ -156,13 +219,15 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 </div>
 </details>
 
-### `~/iot`
+## `~/iot`
 
 > **Simulation-first IoT.** I build each pipeline against a coherent *virtual world*
 > before any hardware exists — so the full **edge → broker → TSDB → dashboard** path
 > is testable on day one, and the ESP32/LoRa integration stays isolated to adapter
 > swaps. Hexagonal cores, MicroPython-ready, enforced by architecture fitness tests.
 > Three end-to-end pipelines so far, **123 tests** between them, security built in.
+>
+> 🔥 They all ingest through **[Emberwall](https://github.com/Zoel-Manchon/emberwall)** — my hardened MQTT edge gateway.
 
 <div align="center">
 
@@ -238,7 +303,8 @@ sensors, reproducing daylight cycles, pressure fronts, rainfall, humidity change
 particulate scrubbing, solar charging and battery behavior. Telemetry flows over
 MQTT through Node-RED into InfluxDB and Grafana, while the hexagonal,
 MicroPython-ready core keeps the future ESP32 + LoRa hardware integration isolated
-to adapter changes.
+to adapter changes. Ingest is handled by my
+[**Emberwall**](https://github.com/Zoel-Manchon/emberwall) MQTT edge gateway.
 
 <img src="https://img.shields.io/badge/Status-Simulation_Ready-3FB950?style=flat-square"/>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
@@ -333,7 +399,7 @@ Wearable IoT project using LoRaWAN, embedded sensors, and remote monitoring.
 </table>
 </details>
 
-### `~/quant`
+## `~/quant`
 
 <table>
 <tr>
@@ -358,7 +424,7 @@ Python trading backtesting engine built with DDD + hexagonal architecture: a ric
 </tr>
 </table>
 
-### `~/backend`
+## `~/backend`
 
 <table>
 <tr>
@@ -390,7 +456,7 @@ Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices ove
 </div>
 </details>
 
-### `~/games`
+## `~/games`
 
 <table>
 <tr>
@@ -424,13 +490,17 @@ A Nokia-era classic rebuilt as a polished arcade game: HD rendering, custom pixe
 
 <br/>
 
+## `$ cat ~/.principles`
+
 ```text
-$ cat ~/.principles
 > build small systems, not isolated scripts
 > measure what you build
 > keep security in mind from line one
 > ship something that actually works
 ```
+
+<br/>
+
 
 <div align="center">
 
