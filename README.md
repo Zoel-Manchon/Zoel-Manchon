@@ -10,8 +10,8 @@
 <img src="https://img.shields.io/badge/GitHub-Zoel--Manchon-181717?style=for-the-badge&logo=github"/>
 </a>
 
-</br>
-</br>
+<br/>
+<br/>
 <img src="https://raw.githubusercontent.com/Zoel-Manchon/Zoel-Manchon/main/assets/pipeline.svg" width="100%" alt="Animated terminal panel: data flowing through Zoel's pipeline — edge sensors, link, backend, store, telemetry — with a security layer scanning across every stage." />
 <br/>
 </div>
@@ -41,6 +41,7 @@ I learn by building real systems end to end — edge sensors, secured services, 
 <img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
+<img src="https://img.shields.io/badge/Ruby-CC342D?style=flat-square&logo=ruby&logoColor=white"/>
 <img src="https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white"/>
 <img src="https://img.shields.io/badge/Linux-000000?style=flat-square&logo=linux&logoColor=white"/>
 <img src="https://img.shields.io/badge/Buildroot-2E3B4E?style=flat-square"/>
@@ -61,7 +62,7 @@ I learn by building real systems end to end — edge sensors, secured services, 
 ├── cybersecurity/   # secrets vault, zero-trust auth, scanners, hardening
 ├── iot/             # esp32, lora, edge-ml, secured telemetry pipelines
 ├── quant/           # backtesting engines, trading analytics
-├── backend/         # real-time services
+├── backend/         # real-time services, tamper-evident blockchain
 └── games/           # because why not
 ```
 
@@ -444,15 +445,41 @@ Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices ove
 
 </td>
 <td width="50%" valign="top">
+
+#### ⛓ toychain — Tamper-Evident Blockchain (Rails)
+
+A toy blockchain in Ruby on Rails built to make integrity *visible*: SHA-256
+proof-of-work mining, per-block validation, and a `☠ tamper` button that
+corrupts a block and shows the whole chain break in cascade — the same failure
+mode my hash-chained audit ledgers defend against. Business logic lives in
+plain Ruby services with zero Rails dependencies; blocks are immutable by
+design, so routes only expose mine/index. Brakeman + RuboCop + full test suite
+in CI, amber-CRT terminal UI in Hotwire.
+
+<img src="https://img.shields.io/badge/Rails_8-CC0000?style=flat-square&logo=rubyonrails&logoColor=white"/>
+<img src="https://img.shields.io/badge/Ruby-CC342D?style=flat-square&logo=ruby&logoColor=white"/>
+<img src="https://img.shields.io/badge/Hotwire-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"/>
+<img src="https://img.shields.io/badge/SHA--256_PoW-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/toychain)
+
 </td>
 </tr>
 </table>
 
 <details>
-<summary><b>▸ Live demo — Crypto·Watch terminal</b></summary>
+<summary><b>▸ Live demos — real-time terminal & a chain breaking in cascade</b></summary>
 <br/>
 <div align="center">
+
+**Crypto·Watch** — live prices, charts, and market analytics
 <img src="https://raw.githubusercontent.com/Zoel-Manchon/crypto-dashboard/main/docs/screenshots/terminal.gif" width="100%" alt="Crypto·Watch real-time terminal: live prices, charts, and market analytics."/>
+<br/><br/>
+
+**toychain** — mine, tamper, and watch chain integrity break in cascade
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/toychain/main/docs/demo.gif" width="100%" alt="toychain: proof-of-work mining and visual tamper detection breaking the chain in cascade."/>
+
 </div>
 </details>
 
