@@ -448,19 +448,22 @@ Real-time cryptocurrency terminal: a Rust/Axum backend streaming live prices ove
 
 #### ⛓ toychain — Tamper-Evident Blockchain (Rails)
 
-A toy blockchain in Ruby on Rails built to make integrity *visible*: SHA-256
-proof-of-work mining, per-block validation, and a `☠ tamper` button that
-corrupts a block and shows the whole chain break in cascade — the same failure
-mode my hash-chained audit ledgers defend against. Business logic lives in
-plain Ruby services with zero Rails dependencies; blocks are immutable by
-design, so routes only expose mine/index. Brakeman + RuboCop + full test suite
-in CI, amber-CRT terminal UI in Hotwire.
+An educational blockchain in Ruby on Rails built to make integrity *visible* —
+and attributable. SHA-256 proof-of-work mined in **background jobs** (Solid
+Queue) with a live progress bar streamed to every browser via Turbo Streams
+over Solid Cable — a DB-backed realtime layer, **authenticated at the
+WebSocket**. Every block records its mining operator; tampering is signed into
+the data; a three-check validator (link · integrity · declared work) breaks
+the chain in cascade. **Bearer-token JSON API** (only SHA-256 digests stored)
+consumed by a dependency-free **Python verifier** that re-validates the whole
+chain independently — don't trust, verify. Brakeman + RuboCop + ~40 tests in CI.
 
 <img src="https://img.shields.io/badge/Rails_8-CC0000?style=flat-square&logo=rubyonrails&logoColor=white"/>
 <img src="https://img.shields.io/badge/Ruby-CC342D?style=flat-square&logo=ruby&logoColor=white"/>
+<img src="https://img.shields.io/badge/Solid_Queue_·_Cable-111111?style=flat-square"/>
 <img src="https://img.shields.io/badge/Hotwire-111111?style=flat-square"/>
-<img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"/>
 <img src="https://img.shields.io/badge/SHA--256_PoW-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/Bearer_API_+_Py_verifier-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
 
 [**→ repository**](https://github.com/Zoel-Manchon/toychain)
 
@@ -477,8 +480,8 @@ in CI, amber-CRT terminal UI in Hotwire.
 <img src="https://raw.githubusercontent.com/Zoel-Manchon/crypto-dashboard/main/docs/screenshots/terminal.gif" width="100%" alt="Crypto·Watch real-time terminal: live prices, charts, and market analytics."/>
 <br/><br/>
 
-**toychain** — mine, tamper, and watch chain integrity break in cascade
-<img src="https://raw.githubusercontent.com/Zoel-Manchon/toychain/main/docs/demo.gif" width="100%" alt="toychain: proof-of-work mining and visual tamper detection breaking the chain in cascade."/>
+**toychain** — mine live, tamper with attribution, and verify the chain externally
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/toychain/main/docs/demo.gif" width="100%" alt="toychain: live proof-of-work mining with progress bar, attributed tamper breaking the chain in cascade, and independent verification from a Python script."/>
 
 </div>
 </details>
