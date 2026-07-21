@@ -60,6 +60,7 @@ I learn by building real systems end to end — edge sensors, secured services, 
 ~/projects
 ├── os/              # emberwall — hardened IoT/OT linux distro (buildroot + rust)
 ├── cybersecurity/   # secrets vault, zero-trust auth, scanners, hardening
+├── desktop/         # native rust gui tools — file integrity monitor
 ├── iot/             # esp32, lora, edge-ml, secured telemetry pipelines
 ├── quant/           # backtesting engines, trading analytics
 ├── backend/         # real-time services, tamper-evident blockchain
@@ -219,6 +220,46 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 
 </div>
 </details>
+
+## `~/desktop`
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+#### ◆ phosphor — File Integrity Monitor (Rust GUI)
+
+A native desktop **file integrity monitor** (a mini Tripwire/AIDE) written in
+Rust with an **egui** amber-CRT interface. Anchor a **SHA-256 baseline** of a
+folder, then watch it in real time: a background `notify` thread streams
+filesystem events down an `mpsc` channel and any modification, addition or
+deletion surfaces the instant it happens — with a native desktop alert while
+minimized. The baseline itself is **HMAC-SHA256 signed** (constant-time verify),
+so an attacker who edits a file *and* rewrites `.phosphor.json` still can't forge
+a valid signature without the key — *quis custodiet ipsos custodes*. Gitignore-style
+ignore rules, re-baseline, and **JSON/CEF export** for SIEM ingestion. Pure,
+unit-tested core with zero UI dependencies; cross-platform (inotify / FSEvents /
+Win32).
+
+<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
+<img src="https://img.shields.io/badge/egui-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/SHA--256-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/HMAC_Signed-A32D2D?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/SIEM_JSON_/_CEF-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+
+> 🔥 Designed to fold into [**Emberwall**](https://github.com/Zoel-Manchon/emberwall) as an endpoint-integrity component.
+
+[**→ repository**](https://github.com/Zoel-Manchon/phosphor)
+
+</td>
+<td width="50%" valign="top">
+
+<br/>
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/phosphor/main/docs/demo.png" width="100%" alt="phosphor — amber-CRT file integrity monitor: findings list showing modified, added and deleted files, with a GUARDING indicator and HMAC key field."/>
+
+</td>
+</tr>
+</table>
 
 ## `~/iot`
 
