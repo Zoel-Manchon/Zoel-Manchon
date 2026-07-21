@@ -223,10 +223,6 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 
 ## `~/desktop`
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
 #### ◆ phosphor — File Integrity Monitor (Rust GUI)
 
 A native desktop **file integrity monitor** (a mini Tripwire/AIDE) written in
@@ -241,25 +237,19 @@ ignore rules, re-baseline, and **JSON/CEF export** for SIEM ingestion. Pure,
 unit-tested core with zero UI dependencies; cross-platform (inotify / FSEvents /
 Win32).
 
+<p>
 <img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
 <img src="https://img.shields.io/badge/egui-111111?style=flat-square"/>
 <img src="https://img.shields.io/badge/SHA--256-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
 <img src="https://img.shields.io/badge/HMAC_Signed-A32D2D?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
 <img src="https://img.shields.io/badge/SIEM_JSON_/_CEF-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+</p>
 
 > 🔥 Designed to fold into [**Emberwall**](https://github.com/Zoel-Manchon/emberwall) as an endpoint-integrity component.
 
 [**→ repository**](https://github.com/Zoel-Manchon/phosphor)
 
-</td>
-<td width="50%" valign="top">
-
-<br/>
-<img src="https://raw.githubusercontent.com/Zoel-Manchon/phosphor/main/docs/demo.png" width="100%" alt="phosphor — amber-CRT file integrity monitor: findings list showing modified, added and deleted files, with a GUARDING indicator and HMAC key field."/>
-
-</td>
-</tr>
-</table>
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/phosphor/main/docs/demo.gif" width="100%" alt="phosphor — amber-CRT file integrity monitor: anchoring a signed baseline, live tamper detection with modified/added/deleted findings, desktop alert, and a rejected forged baseline."/>
 
 ## `~/iot`
 
