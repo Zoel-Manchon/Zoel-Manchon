@@ -59,7 +59,7 @@ I learn by building real systems end to end — edge sensors, secured services, 
 ```bash
 ~/projects
 ├── os/              # emberwall — hardened IoT/OT linux distro (buildroot + rust)
-├── cybersecurity/   # secrets vault, zero-trust auth, scanners, hardening
+├── cybersecurity/   # vaults, zero-trust auth, scanners, hardening, secure editor
 ├── desktop/         # native rust gui tools — file integrity monitor
 ├── iot/             # esp32, lora, edge-ml, secured telemetry pipelines
 ├── quant/           # backtesting engines, trading analytics
@@ -194,6 +194,27 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 
 </td>
 <td width="50%" valign="top">
+
+#### 𓂀 Maat — As Above, So Below
+
+A retro modal terminal editor written in **Rust** where the buffer and the file on
+disk are treated as two states that must remain in balance. Maat combines
+Vim-inspired modes and motions with **SHA-256 integrity tracking**, atomic saves,
+external-change detection, conflict-aware writes, undo/redo, incremental search,
+relative line numbers, and structured **JSON/CEF audit logs** for SIEM ingestion.
+Its demo includes a controlled attacker process modifying the file externally:
+Maat detects the hash mismatch, blocks the normal save, exposes the conflict
+through `:check`, and records the operator's final decision.
+
+<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"/>
+<img src="https://img.shields.io/badge/ratatui-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/Modal_TUI-111111?style=flat-square"/>
+<img src="https://img.shields.io/badge/SHA--256_Integrity-111111?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+<img src="https://img.shields.io/badge/Atomic_Saves-3FB950?style=flat-square"/>
+<img src="https://img.shields.io/badge/SIEM_JSON_/_CEF-A32D2D?style=flat-square&logo=hackthebox&logoColor=9FEF00"/>
+
+[**→ repository**](https://github.com/Zoel-Manchon/maat)
+
 </td>
 </tr>
 </table>
@@ -217,6 +238,10 @@ Security-focused Arch Linux setup: system hardening, reduced attack surface, and
 
 **Pyscan** — the modular OT/port scanner in action
 <img src="https://raw.githubusercontent.com/Zoel-Manchon/pyscan/main/docs/demo.gif" width="100%" alt="Pyscan modular port and OT-protocol scanner demo."/>
+<br/><br/>
+
+**Maat — As Above, So Below** — modal editing, atomic saves, and a simulated external attacker triggering integrity protection
+<img src="https://raw.githubusercontent.com/Zoel-Manchon/maat/main/assets/maat-demo.gif" width="100%" alt="Maat retro modal terminal editor demo: editing, search, undo and redo, atomic saves, external file tampering detection, blocked overwrite, integrity check, and SIEM audit event."/>
 
 </div>
 </details>
