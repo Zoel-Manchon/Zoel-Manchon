@@ -8,7 +8,7 @@ I build security-focused systems end to end: embedded telemetry, hardened Linux,
 zero-trust identity, defensive attack simulations, real-time backends and native tools.
 
 [Portfolio](https://zoel-manchon.github.io/) ·
-[LinkedIn](https://www.linkedin.com/in/zoel-arias-manchon-b4b6b2423/) ·
+[LinkedIn](https://www.linkedin.com/in/zoel-arias-manchon) ·
 [Email](mailto:zroot1001@proton.me)
 
 **Core stack:** `Rust` · `Python` · `Linux` · `Docker` · `PostgreSQL` · `MQTT` · `Grafana`
@@ -227,7 +227,7 @@ Ship a working demonstration.
 ### Open to junior opportunities in IoT/OT security, backend and systems engineering
 
 [View my portfolio](https://zoel-manchon.github.io/) ·
-[Connect on LinkedIn](https://www.linkedin.com/in/zoel-arias-manchon-b4b6b2423/) ·
+[Connect on LinkedIn](https://www.linkedin.com/in/zoel-arias-manchon) ·
 [Send an email](mailto:zroot1001@proton.me)
 
 **From edge devices to secured data.**
