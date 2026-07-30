@@ -90,7 +90,7 @@ a controlled attack range for demonstrating detection and response.
 
 [Repository](https://github.com/Zoel-Manchon/aegis-zero-trust) ·
 [Attack-range demo in GitHub viewer](https://github.com/Zoel-Manchon/aegis-zero-trust/blob/main/docs/attack_simulator.gif) ·
-[Walkthrough](https://github.com/Zoel-Manchon/aegis-zero-trust/blob/main/DEMO.md)
+[Walkthrough](https://github.com/Zoel-Manchon/aegis-zero-trust/blob/main/README.md)
 
 <a href="https://github.com/Zoel-Manchon/aegis-zero-trust/blob/main/docs/attack_simulator.gif">
   <img src="https://raw.githubusercontent.com/Zoel-Manchon/aegis-zero-trust/main/docs/attack_simulator.gif"
