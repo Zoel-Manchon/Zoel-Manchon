@@ -89,14 +89,10 @@ a controlled attack range for demonstrating detection and response.
 **Technology:** `Rust` · `Axum` · `React` · `PostgreSQL` · `Redis` · `Caddy` · `Vault`
 
 [Repository](https://github.com/Zoel-Manchon/aegis-zero-trust) ·
-[Attack-range demo](https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4) ·
+[Open full demo](https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4) ·
 [Walkthrough](https://github.com/Zoel-Manchon/aegis-zero-trust/blob/main/README.md)
 
-<a href="https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4">
-  <img src="https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4"
-       alt="Aegis SOC attack range launching controlled attacks and displaying live detections"
-       width="100%">
-</a>
+https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4
 
 ---
 
