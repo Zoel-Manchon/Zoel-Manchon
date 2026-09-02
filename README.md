@@ -96,7 +96,38 @@ https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4
 
 ---
 
-## 3. [AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault)
+## 3. [HoneyTrap — MQTT/CoAP Honeypot That Refuses to Amplify](https://github.com/Zoel-Manchon/honeytrap)
+
+**A low-interaction IoT honeypot whose hardest requirement was not capturing attacks, but never becoming one.**
+
+Over UDP the source address is never verified, so a CoAP service that answers every
+request is a reflector waiting to be aimed at someone else. HoneyTrap emulates
+believable IoT devices, classifies the hostile traffic they attract, and decides per
+datagram whether replying is safe.
+
+**Engineering evidence**
+
+- Anti-amplification by design: a response-size ceiling, a per-source token bucket bounded in memory, and `Proxy-Uri` never honoured. The attempt is always recorded; only the reply is withheld.
+- MQTT 3.1/3.1.1/5.0 and CoAP codecs as pure functions over `bytes`, fuzzed with 5,000 random inputs each — no exception but a malformed-packet error may escape.
+- Spec violations are captured, not rejected: a strict parser would discard exactly the traffic worth studying.
+- Every listener limit is a security control with a test: byte budgets, idle and session timeouts, per-IP connection caps.
+- Attacker-controlled values never become InfluxDB tags — `client_id` as a tag is a cardinality DoS against your own database.
+- Newlines are stripped rather than escaped: neither line protocol nor CEF can escape them, so one would inject a forged record.
+- The attack simulator is a separate package importing nothing from the honeypot, and every scenario doubles as a CI regression test.
+- CEF output on the same Emberwall schema as `phosphor` and `maat`, so a hostile session and a file-integrity alert correlate in one pane.
+- Zero runtime dependencies, hash-pinned toolchain, 105 tests, `mypy --strict`, `bandit` and `ruff` clean.
+
+**Technology:** `Python` · `asyncio` · `Hexagonal architecture` · `MQTT` · `CoAP` · `InfluxDB` · `Grafana` · `Docker`
+
+[Repository](https://github.com/Zoel-Manchon/honeytrap) ·
+[Open full demo](https://github.com/user-attachments/assets/23ed7417-6421-4fc8-b83d-7f227bf84f72) ·
+[Architecture](https://github.com/Zoel-Manchon/honeytrap/blob/main/docs/ARCHITECTURE.md)
+
+https://github.com/user-attachments/assets/23ed7417-6421-4fc8-b83d-7f227bf84f72
+
+---
+
+## 4. [AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault)
 
 **A zero-knowledge secrets manager with a Python domain core and native Rust cryptography.**
 
@@ -119,7 +150,7 @@ desktop application, keeping cryptographic operations isolated behind swappable 
 
 ---
 
-## 4. [Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor)
+## 5. [Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor)
 
 **A cross-platform Rust desktop tool for detecting filesystem tampering in real time.**
 
@@ -194,7 +225,8 @@ future ESP32 and LoRa hardware adapter without rewriting the domain model.
 - **[Toychain](https://github.com/Zoel-Manchon/toychain)** — Rails 8 tamper-evident blockchain with background proof-of-work, authenticated real-time updates and an independent Python verifier.
 - **[Crypto·Watch](https://github.com/Zoel-Manchon/crypto-dashboard)** — Rust/Axum WebSocket backend, Astro/React frontend, PostgreSQL persistence and Docker delivery.
 - **[QuantLab](https://github.com/Zoel-Manchon/quantlab)** — DDD and hexagonal backtesting engine with order execution, OCO controls, walk-forward analysis and performance metrics.
-- **[Elitewear XI](https://github.com/Zoel-Manchon/elitewear-xi)** — Laravel 13 ecommerce with PayPal checkout and a versioned REST API, built with application security as the design constraint: IDOR prevention on cart and orders, row-level locking against stock and coupon oversell, strict CSP without inline scripts, hardened third-party image ingestion and a tamper-evident audit log. Test suite verifies that attacks fail.
+- **[Elitewear XI](https://github.com/Zoel-Manchon/elitewear-xi)** — Laravel 13 ecommerce with PayPal checkout and a versioned REST API, built with application security as the design constraint: IDOR prevention, row-level locking against stock and coupon oversell, strict CSP without inline scripts and a tamper-evident audit log. The test suite verifies that the attacks fail.
+
 ### Earlier hardware and telemetry work
 
 - **[API IoT](https://github.com/Zoel-Manchon/api_iot)** — ESP32 and DHT22 telemetry over MQTT to a Node.js backend and React dashboard.
