@@ -2,18 +2,34 @@
 
 # Zoel Arias Manchón
 
-### IoT/OT Security · Secure Systems · Rust / Python · AppSec / DevSecOps
+### IoT/OT Security · Secure Systems · Rust / Python / Java · AppSec / DevSecOps
 
 I build security-focused systems end to end: embedded telemetry, hardened Linux,
-zero-trust identity, defensive attack simulations, real-time backends and native tools.
+zero-trust identity, cryptographic evidence, defensive attack simulations,
+real-time backends and native tools.
 
 [Portfolio](https://zoel-manchon.github.io/) ·
 [LinkedIn](https://www.linkedin.com/in/zoel-arias-manchon) ·
 [Email](mailto:zroot1001@proton.me)
 
-**Core stack:** `Rust` · `Python` · `Linux` · `Docker` · `PostgreSQL` · `MQTT` · `Grafana`
+**Core stack:** `Rust` · `Python` · `Java` · `Linux` · `Docker` · `PostgreSQL` · `MQTT` · `Grafana`
 
 </div>
+
+---
+
+## Featured work at a glance
+
+| Project | What it is | Stack | Demo |
+|---|---|---|---|
+| **[Emberwall](https://github.com/Zoel-Manchon/emberwall)** | Hardened Linux distribution built from source for IoT/OT edge | `Buildroot` `Rust` `C` `nftables` | [▶](https://github.com/Zoel-Manchon/emberwall/blob/main/docs/demo.gif) |
+| **[Aegis](https://github.com/Zoel-Manchon/aegis-zero-trust)** | Zero-trust identity provider with a live SOC console | `Rust` `Axum` `React` `PostgreSQL` | [▶](https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4) |
+| **[HoneyTrap](https://github.com/Zoel-Manchon/honeytrap)** | MQTT/CoAP honeypot engineered never to become an amplifier | `Python` `asyncio` `InfluxDB` | [▶](https://github.com/user-attachments/assets/23ed7417-6421-4fc8-b83d-7f227bf84f72) |
+| **[Keystone](https://github.com/Zoel-Manchon/keystone-control-plane)** | Device identity and OTA control plane with its own X.509 CA | `Java 25` `Spring Boot 4` `PostgreSQL` | [▶](https://github.com/user-attachments/assets/4ba67ffe-b369-4bb9-b658-b71dc7ed7610) |
+| **[Prorata](https://github.com/Zoel-Manchon/prorata)** | Tamper-evident submetering a tenant can verify in their browser | `Python` `FastAPI` `Angular` `MySQL` | [▶](https://github.com/user-attachments/assets/e0dd7a3c-2e27-4de8-8d5b-c59b388dc889) |
+| **[Ferrogate](https://github.com/Zoel-Manchon/ferrogate)** | Multi-tenant industrial telemetry isolated in the engine | `Python` `DDD` `MQTT/mTLS` `InfluxDB` | [▶](https://github.com/user-attachments/assets/a6826689-530c-48cd-af2b-8a3253fda893) |
+| **[AegisVault](https://github.com/Zoel-Manchon/aegisvault)** | Zero-knowledge secrets vault, Python core with Rust crypto | `Python` `Rust` `PyO3` `PySide6` | [▶](https://github.com/Zoel-Manchon/aegisvault/blob/main/docs/demo.gif) |
+| **[Phosphor](https://github.com/Zoel-Manchon/phosphor)** | Native file integrity monitor with signed baselines | `Rust` `egui` `HMAC` `SIEM` | [▶](https://github.com/Zoel-Manchon/phosphor/blob/main/docs/demo.gif) |
 
 ---
 
@@ -27,6 +43,7 @@ I focus on:
 
 - **IoT/OT security:** secure telemetry, edge gateways, MQTT, LoRaWAN and anomaly detection.
 - **Systems security:** Rust, hardened Linux, integrity controls and applied cryptography.
+- **Cryptographic evidence:** hash chains, Merkle transparency logs and proofs a third party can recheck.
 - **Application security:** zero-trust authentication, MFA, passkeys, RBAC and auditability.
 - **Delivery:** reproducible Docker environments, automated tests, CI and technical documentation.
 
@@ -127,7 +144,94 @@ https://github.com/user-attachments/assets/23ed7417-6421-4fc8-b83d-7f227bf84f72
 
 ---
 
-## 4. [AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault)
+## 4. [Keystone — Device Identity & OTA Control Plane](https://github.com/Zoel-Manchon/keystone-control-plane)
+
+**A control plane that decides who a device is and what firmware it is allowed to run.**
+
+Keystone collects no telemetry. It runs its own two-tier X.509 CA, enrols devices with
+single-use tokens, signs firmware artifacts and rolls updates out by cohort with
+rollback. The layers are separate **Maven modules**, so the direction of dependencies is
+guaranteed by the compiler rather than by discipline.
+
+**Engineering evidence**
+
+- Root + issuing CA hierarchy on EC P-256, with CSR proof-of-possession; the subject and extensions are set by the CA and never copied from the request.
+- Enrolment tokens are spent by an atomic compare-and-set in PostgreSQL, so exactly one of N concurrent requests can win before any certificate is signed.
+- Certificate rotation demands an ECDSA signature from the **current** private key over the canonical DER of the new CSR — a fingerprint is public information, not a secret.
+- Real mTLS against Mosquitto: server certificate issued by the CA, `require_certificate`, CRL refreshed every 5 minutes and per-device-id ACLs.
+- Firmware signed with Ed25519; the device id lives inside the signed manifest, so a manifest cannot be replayed onto another device.
+- Cohort membership is computed, not stored: a rollout over a hundred thousand devices costs the same as one over ten.
+- Hash-chained audit log with an append-only trigger in PostgreSQL, so an `UPDATE` is rejected by the engine.
+- 78 tests: 30 domain, 5 application, 6 ArchUnit contracts and 37 integration tests against a real PostgreSQL via Testcontainers.
+
+**Technology:** `Java 25` · `Spring Boot 4` · `PostgreSQL` · `Bouncy Castle` · `MQTT/mTLS` · `Testcontainers` · `ArchUnit`
+
+[Repository](https://github.com/Zoel-Manchon/keystone-control-plane) ·
+[Open full demo](https://github.com/user-attachments/assets/4ba67ffe-b369-4bb9-b658-b71dc7ed7610)
+
+https://github.com/user-attachments/assets/4ba67ffe-b369-4bb9-b658-b71dc7ed7610
+
+---
+
+## 5. [Prorata — Tamper-Evident Submetering](https://github.com/Zoel-Manchon/prorata)
+
+**Split a building's shared consumption, and let the tenant recompute the evidence behind their bill.**
+
+A meter reading only means something if you know who measured it, so the signature is
+produced **on the device** before anything touches the network. Every settlement interval
+is sealed with a Merkle root, and a tenant disputing a line recomputes it **in their own
+browser** — a proof checked by the server that issued the invoice would prove nothing.
+
+**Engineering evidence**
+
+- On-device Ed25519 signing over a canonical payload, verified against the certificate enrolled at commissioning; enrolment is a deliberate operator action, never a self-service endpoint.
+- RFC 6962 append-only log: inclusion proofs say a reading is in *some* tree, so consistency proofs show nothing was rewritten between two heads.
+- Each head is co-signed by an independent witness running outside the operator's control, and optionally anchored on chain.
+- The common-area split uses largest remainder, because rounding must not create or destroy kWh.
+- MySQL triggers reject `UPDATE`/`DELETE` on readings and sealed intervals: application-level append-only is not enough.
+- Erasure without destroying evidence — readings are encrypted per tenant, so destroying the key erases the data while every root and proof still verifies.
+- Nothing is ever edited: a bad reading is superseded by a new signed frame carrying the original's timestamp, so the energy stays in its own tariff period.
+- 261 tests, 134 of them running with no database and no I/O at all; Python and TypeScript assert the same protocol vectors so the two sides cannot drift.
+
+**Technology:** `Python` · `FastAPI` · `Angular` · `MySQL` · `Ed25519` · `RFC 6962` · `Hexagonal architecture`
+
+[Repository](https://github.com/Zoel-Manchon/prorata) ·
+[Open full demo](https://github.com/user-attachments/assets/e0dd7a3c-2e27-4de8-8d5b-c59b388dc889)
+
+https://github.com/user-attachments/assets/e0dd7a3c-2e27-4de8-8d5b-c59b388dc889
+
+---
+
+## 6. [Ferrogate — Multi-Tenant Industrial Telemetry](https://github.com/Zoel-Manchon/ferrogate)
+
+**Edge gateways that speak Modbus and OPC-UA, publishing to a platform that isolates each customer in the engine, not in the code.**
+
+The ingest service is an MQTT client: it never sees the certificate of the gateway that
+published. So every envelope is signed at the edge and verified against the certificate
+enrolled in PostgreSQL, which puts **the broker outside the trust base** — it can replay,
+reorder or mix messages, but it cannot forge a valid one.
+
+**Engineering evidence**
+
+- Gateway identity lives in the certificate SAN and is the only source of truth; the topic is checked against the proven identity, never the reverse.
+- Topic ownership is compared segment by segment, so `acme` never validates a topic belonging to `acme-corp`.
+- Replay defence on two axes: a time window on `sent_at` and a monotonic per-gateway sequence persisted across restarts.
+- Tenant isolation by PostgreSQL Row Level Security with `FORCE`, so the policy applies to the table owner too. The scope is transaction-local: with a connection pool, a session-level setting would leak the previous request's tenant.
+- It fails closed — with no tenant set, `current_setting` returns NULL, and NULL matches nothing.
+- Four bounded contexts that cannot import each other, enforced by `import-linter` as a build-breaking contract.
+- Store-and-forward SQLite buffer at the edge, drained before anything new so an intermittent link does not deliver data out of order.
+- 62 tests, 2 architecture contracts, `ruff`, `mypy --strict` and `bandit` clean.
+
+**Technology:** `Python` · `DDD` · `Modbus` · `OPC-UA` · `MQTT/mTLS` · `PostgreSQL RLS` · `InfluxDB` · `Grafana`
+
+[Repository](https://github.com/Zoel-Manchon/ferrogate) ·
+[Open full demo](https://github.com/user-attachments/assets/a6826689-530c-48cd-af2b-8a3253fda893)
+
+https://github.com/user-attachments/assets/a6826689-530c-48cd-af2b-8a3253fda893
+
+---
+
+## 7. [AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault)
 
 **A zero-knowledge secrets manager with a Python domain core and native Rust cryptography.**
 
@@ -146,11 +250,18 @@ desktop application, keeping cryptographic operations isolated behind swappable 
 
 **Technology:** `Python` · `Rust` · `PyO3` · `PySide6` · `SQLite` · `Applied cryptography`
 
-[Repository](https://github.com/Zoel-Manchon/aegisvault)
+[Repository](https://github.com/Zoel-Manchon/aegisvault) ·
+[Demo in GitHub viewer](https://github.com/Zoel-Manchon/aegisvault/blob/main/docs/demo.gif)
+
+<a href="https://github.com/Zoel-Manchon/aegisvault/blob/main/docs/demo.gif">
+  <img src="https://raw.githubusercontent.com/Zoel-Manchon/aegisvault/main/docs/demo.gif"
+       alt="AegisVault unlocking, secret management and audit ledger demo"
+       width="100%">
+</a>
 
 ---
 
-## 5. [Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor)
+## 8. [Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor)
 
 **A cross-platform Rust desktop tool for detecting filesystem tampering in real time.**
 
@@ -170,6 +281,12 @@ filesystem notifications and exposes modified, added or deleted files immediatel
 
 [Repository](https://github.com/Zoel-Manchon/phosphor) ·
 [Demo in GitHub viewer](https://github.com/Zoel-Manchon/phosphor/blob/main/docs/demo.gif)
+
+<a href="https://github.com/Zoel-Manchon/phosphor/blob/main/docs/demo.gif">
+  <img src="https://raw.githubusercontent.com/Zoel-Manchon/phosphor/main/docs/demo.gif"
+       alt="Phosphor baseline signing and real-time tamper detection demo"
+       width="100%">
+</a>
 
 ---
 
@@ -215,15 +332,15 @@ future ESP32 and LoRa hardware adapter without rewriting the domain model.
 
 ### Security and systems
 
-- **[Maat](https://github.com/Zoel-Manchon/maat)** — Rust modal editor with SHA-256 integrity tracking, atomic saves, external-change detection and SIEM audit output.
-- **[Pyscan](https://github.com/Zoel-Manchon/pyscan)** — asynchronous network and OT-protocol scanner with host discovery, fingerprinting and structured output.
-- **[Auth-Lab](https://github.com/Zoel-Manchon/auth-lab)** — NestJS zero-trust authentication lab with MFA, replay defence, risk analysis and a controlled attack simulator.
+- **[Maat](https://github.com/Zoel-Manchon/maat)** — Rust modal editor with SHA-256 integrity tracking, atomic saves, external-change detection and SIEM audit output. · [Demo](https://github.com/Zoel-Manchon/maat/blob/main/assets/maat-demo.gif)
+- **[Pyscan](https://github.com/Zoel-Manchon/pyscan)** — asynchronous network and OT-protocol scanner with host discovery, fingerprinting and structured output. · [Demo](https://github.com/Zoel-Manchon/pyscan/blob/main/docs/demo.gif)
+- **[Auth-Lab](https://github.com/Zoel-Manchon/auth-lab)** — NestJS zero-trust authentication lab with MFA, replay defence, risk analysis and a controlled attack simulator. · [Demo](https://github.com/Zoel-Manchon/auth-lab/blob/main/docs/diagrams/demo/attack-simulator.gif)
 - **[Arch Linux Hardened Server](https://github.com/Zoel-Manchon/arch-linux-hardened-server)** — documented Linux hardening and attack-surface reduction.
 
 ### Backend and data
 
-- **[Toychain](https://github.com/Zoel-Manchon/toychain)** — Rails 8 tamper-evident blockchain with background proof-of-work, authenticated real-time updates and an independent Python verifier.
-- **[Crypto·Watch](https://github.com/Zoel-Manchon/crypto-dashboard)** — Rust/Axum WebSocket backend, Astro/React frontend, PostgreSQL persistence and Docker delivery.
+- **[Toychain](https://github.com/Zoel-Manchon/toychain)** — Rails 8 tamper-evident blockchain with background proof-of-work, authenticated real-time updates and an independent Python verifier. · [Demo](https://github.com/Zoel-Manchon/toychain/blob/main/docs/demo.gif)
+- **[Crypto·Watch](https://github.com/Zoel-Manchon/crypto-dashboard)** — Rust/Axum WebSocket backend, Astro/React frontend, PostgreSQL persistence and Docker delivery. · [Demo](https://github.com/user-attachments/assets/ea7354d5-4b99-441a-8539-334415d53749)
 - **[QuantLab](https://github.com/Zoel-Manchon/quantlab)** — DDD and hexagonal backtesting engine with order execution, OCO controls, walk-forward analysis and performance metrics.
 - **[Elitewear XI](https://github.com/Zoel-Manchon/elitewear-xi)** — Laravel 13 ecommerce with PayPal checkout and a versioned REST API, built with application security as the design constraint: IDOR prevention, row-level locking against stock and coupon oversell, strict CSP without inline scripts and a tamper-evident audit log. The test suite verifies that the attacks fail.
 
@@ -232,7 +349,7 @@ future ESP32 and LoRa hardware adapter without rewriting the domain model.
 - **[API IoT](https://github.com/Zoel-Manchon/api_iot)** — ESP32 and DHT22 telemetry over MQTT to a Node.js backend and React dashboard.
 - **[Eastron LoRaWAN Energy Monitoring](https://github.com/Zoel-Manchon/eastron-lorawan-energy-monitoring)** — electrical-energy telemetry with LoRaWAN, InfluxDB and Grafana.
 - **[SmartWatch LoRaWAN](https://github.com/Zoel-Manchon/Proyecto_IoT_J3_SmartWatch_LoRaWAN)** — wearable sensing and remote monitoring over LoRaWAN.
-- **[Snake HD](https://github.com/Zoel-Manchon/snake-hd)** — polished Pygame project with a tamper-evident leaderboard backed by Rust/Axum.
+- **[Snake HD](https://github.com/Zoel-Manchon/snake-hd)** — polished Pygame project with a tamper-evident leaderboard backed by Rust/Axum. · [Demo](https://github.com/Zoel-Manchon/snake-hd/blob/main/docs/screenshots/snake_hd.gif)
 
 ---
 
