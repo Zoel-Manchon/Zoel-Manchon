@@ -12,7 +12,7 @@ real-time backends and native tools.
 [LinkedIn](https://www.linkedin.com/in/zoel-arias-manchon) ·
 [Email](mailto:zroot1001@proton.me)
 
-**Core stack:** `Rust` · `Python` · `Java` · `Linux` · `Docker` · `PostgreSQL` · `MQTT` · `Grafana`
+**Core stack:** `Rust` · `Python` · `Java` · `TypeScript` · `Linux` · `Docker` · `PostgreSQL` · `TimescaleDB` · `MQTT`
 
 </div>
 
@@ -23,6 +23,7 @@ real-time backends and native tools.
 | Project | What it is | Stack | Demo |
 |---|---|---|---|
 | **[Emberwall](https://github.com/Zoel-Manchon/emberwall)** | Hardened Linux distribution built from source for IoT/OT edge | `Buildroot` `Rust` `C` `nftables` | [▶](https://github.com/Zoel-Manchon/emberwall/blob/main/docs/demo.gif) |
+| **[Psychron](https://github.com/Zoel-Manchon/psychron)** | Secure ESP32 telemetry that preserves time across outages and clockless reboots | `ESP32` `Python` `FastAPI` `TimescaleDB` `MQTT/mTLS` | [▶](https://github.com/user-attachments/assets/7cd61433-e8dd-42be-8adb-ff7d193a1d83) |
 | **[Aegis](https://github.com/Zoel-Manchon/aegis-zero-trust)** | Zero-trust identity provider with a live SOC console | `Rust` `Axum` `React` `PostgreSQL` | [▶](https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4) |
 | **[HoneyTrap](https://github.com/Zoel-Manchon/honeytrap)** | MQTT/CoAP honeypot engineered never to become an amplifier | `Python` `asyncio` `InfluxDB` | [▶](https://github.com/user-attachments/assets/23ed7417-6421-4fc8-b83d-7f227bf84f72) |
 | **[Keystone](https://github.com/Zoel-Manchon/keystone-control-plane)** | Device identity and OTA control plane with its own X.509 CA | `Java 25` `Spring Boot 4` `PostgreSQL` | [▶](https://github.com/user-attachments/assets/4ba67ffe-b369-4bb9-b658-b71dc7ed7610) |
@@ -84,7 +85,38 @@ OT/IoT-aware TCP and UDP scanning with an Argon2id + XChaCha20-Poly1305 secrets 
 
 ---
 
-## 2. [Aegis — Zero-Trust Identity & Defensive Attack Range](https://github.com/Zoel-Manchon/aegis-zero-trust)
+## 2. [Psychron — Secure Environmental Telemetry](https://github.com/Zoel-Manchon/psychron)
+
+**An ESP32 measures a room and produces a trustworthy record even through outages, reboots and an unavailable wall clock.**
+
+Psychron secures the full telemetry path: the node authenticates with its own client
+certificate, buffers readings locally when connectivity disappears, and a Python
+ingest service reconstructs event time without flattening an outage into a false
+period of calm. A React panel exposes both the environmental measurements and the
+integrity of the record.
+
+**Engineering evidence**
+
+- MQTT 5 over mutual TLS, with broker ACLs bound to certificate identity and no plaintext listener.
+- LittleFS ring buffer and oldest-first replay preserve readings while the network is unavailable.
+- Boot anchors reconstruct timestamps from device uptime when the ESP32 has no valid wall clock.
+- Idempotent identity through `(device, boot, seq)`, so replayed telemetry cannot become duplicate measurements.
+- Explicit quality bits retain doubtful readings with provenance instead of silently discarding them.
+- TimescaleDB hypertable and continuous aggregates keep queries bounded across long time ranges.
+- Verified OTA digests, invitation-only panel enrolment, Argon2id, TOTP and hardened session cookies.
+- 82 tests across the Python domain, the C++ payload builder and live mTLS transport assertions.
+
+**Technology:** `ESP32 WROOM-32` · `Arduino C++` · `Python 3.12` · `FastAPI` · `React 19` · `PostgreSQL 17` · `TimescaleDB` · `MQTT/mTLS`
+
+[Repository](https://github.com/Zoel-Manchon/psychron) ·
+[Open full demo](https://github.com/user-attachments/assets/7cd61433-e8dd-42be-8adb-ff7d193a1d83) ·
+[Wire contract](https://github.com/Zoel-Manchon/psychron/blob/main/docs/CONTRACT.md)
+
+https://github.com/user-attachments/assets/7cd61433-e8dd-42be-8adb-ff7d193a1d83
+
+---
+
+## 3. [Aegis — Zero-Trust Identity & Defensive Attack Range](https://github.com/Zoel-Manchon/aegis-zero-trust)
 
 **A Rust identity provider connected to a real-time Security Operations Console.**
 
@@ -113,7 +145,7 @@ https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4
 
 ---
 
-## 3. [HoneyTrap — MQTT/CoAP Honeypot That Refuses to Amplify](https://github.com/Zoel-Manchon/honeytrap)
+## 4. [HoneyTrap — MQTT/CoAP Honeypot That Refuses to Amplify](https://github.com/Zoel-Manchon/honeytrap)
 
 **A low-interaction IoT honeypot whose hardest requirement was not capturing attacks, but never becoming one.**
 
@@ -144,7 +176,7 @@ https://github.com/user-attachments/assets/23ed7417-6421-4fc8-b83d-7f227bf84f72
 
 ---
 
-## 4. [Keystone — Device Identity & OTA Control Plane](https://github.com/Zoel-Manchon/keystone-control-plane)
+## 5. [Keystone — Device Identity & OTA Control Plane](https://github.com/Zoel-Manchon/keystone-control-plane)
 
 **A control plane that decides who a device is and what firmware it is allowed to run.**
 
@@ -173,7 +205,7 @@ https://github.com/user-attachments/assets/4ba67ffe-b369-4bb9-b658-b71dc7ed7610
 
 ---
 
-## 5. [Prorata — Tamper-Evident Submetering](https://github.com/Zoel-Manchon/prorata)
+## 6. [Prorata — Tamper-Evident Submetering](https://github.com/Zoel-Manchon/prorata)
 
 **Split a building's shared consumption, and let the tenant recompute the evidence behind their bill.**
 
@@ -202,7 +234,7 @@ https://github.com/user-attachments/assets/e0dd7a3c-2e27-4de8-8d5b-c59b388dc889
 
 ---
 
-## 6. [Ferrogate — Multi-Tenant Industrial Telemetry](https://github.com/Zoel-Manchon/ferrogate)
+## 7. [Ferrogate — Multi-Tenant Industrial Telemetry](https://github.com/Zoel-Manchon/ferrogate)
 
 **Edge gateways that speak Modbus and OPC-UA, publishing to a platform that isolates each customer in the engine, not in the code.**
 
@@ -231,7 +263,7 @@ https://github.com/user-attachments/assets/a6826689-530c-48cd-af2b-8a3253fda893
 
 ---
 
-## 7. [AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault)
+## 8. [AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault)
 
 **A zero-knowledge secrets manager with a Python domain core and native Rust cryptography.**
 
@@ -261,7 +293,7 @@ desktop application, keeping cryptographic operations isolated behind swappable 
 
 ---
 
-## 8. [Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor)
+## 9. [Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor)
 
 **A cross-platform Rust desktop tool for detecting filesystem tampering in real time.**
 
