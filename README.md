@@ -22,15 +22,15 @@ real-time backends and native tools.
 
 | Project | What it is | Stack | Demo |
 |---|---|---|---|
-| **[Emberwall](https://github.com/Zoel-Manchon/emberwall)** | Hardened Linux distribution built from source for IoT/OT edge | `Buildroot` `Rust` `C` `nftables` | [▶](https://github.com/Zoel-Manchon/emberwall/blob/main/docs/demo.gif) |
-| **[Psychron](https://github.com/Zoel-Manchon/psychron)** | Secure ESP32 telemetry that preserves time across outages and clockless reboots | `ESP32` `Python` `FastAPI` `TimescaleDB` `MQTT/mTLS` | [▶](https://github.com/user-attachments/assets/7cd61433-e8dd-42be-8adb-ff7d193a1d83) |
-| **[Aegis](https://github.com/Zoel-Manchon/aegis-zero-trust)** | Zero-trust identity provider with a live SOC console | `Rust` `Axum` `React` `PostgreSQL` | [▶](https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4) |
-| **[HoneyTrap](https://github.com/Zoel-Manchon/honeytrap)** | MQTT/CoAP honeypot engineered never to become an amplifier | `Python` `asyncio` `InfluxDB` | [▶](https://github.com/user-attachments/assets/23ed7417-6421-4fc8-b83d-7f227bf84f72) |
-| **[Keystone](https://github.com/Zoel-Manchon/keystone-control-plane)** | Device identity and OTA control plane with its own X.509 CA | `Java 25` `Spring Boot 4` `PostgreSQL` | [▶](https://github.com/user-attachments/assets/4ba67ffe-b369-4bb9-b658-b71dc7ed7610) |
-| **[Prorata](https://github.com/Zoel-Manchon/prorata)** | Tamper-evident submetering a tenant can verify in their browser | `Python` `FastAPI` `Angular` `MySQL` | [▶](https://github.com/user-attachments/assets/e0dd7a3c-2e27-4de8-8d5b-c59b388dc889) |
-| **[Ferrogate](https://github.com/Zoel-Manchon/ferrogate)** | Multi-tenant industrial telemetry isolated in the engine | `Python` `DDD` `MQTT/mTLS` `InfluxDB` | [▶](https://github.com/user-attachments/assets/a6826689-530c-48cd-af2b-8a3253fda893) |
-| **[AegisVault](https://github.com/Zoel-Manchon/aegisvault)** | Zero-knowledge secrets vault, Python core with Rust crypto | `Python` `Rust` `PyO3` `PySide6` | [▶](https://github.com/Zoel-Manchon/aegisvault/blob/main/docs/demo.gif) |
-| **[Phosphor](https://github.com/Zoel-Manchon/phosphor)** | Native file integrity monitor with signed baselines | `Rust` `egui` `HMAC` `SIEM` | [▶](https://github.com/Zoel-Manchon/phosphor/blob/main/docs/demo.gif) |
+| **[Emberwall](https://github.com/Zoel-Manchon/emberwall)** | Hardened Linux built from source for IoT/OT edge | `Buildroot` `Rust` `nftables` | [▶](#emberwall) |
+| **[Psychron](https://github.com/Zoel-Manchon/psychron)** | Secure ESP32 telemetry that survives outages | `ESP32` `FastAPI` `MQTT/mTLS` | [▶](#psychron) |
+| **[Aegis](https://github.com/Zoel-Manchon/aegis-zero-trust)** | Zero-trust identity provider with a live SOC | `Rust` `Axum` `React` | [▶](#aegis) |
+| **[HoneyTrap](https://github.com/Zoel-Manchon/honeytrap)** | MQTT/CoAP honeypot that refuses to amplify | `Python` `asyncio` `InfluxDB` | [▶](#honeytrap) |
+| **[Keystone](https://github.com/Zoel-Manchon/keystone-control-plane)** | Device identity and OTA plane with its own CA | `Java 25` `Spring Boot` `PostgreSQL` | [▶](#keystone) |
+| **[Prorata](https://github.com/Zoel-Manchon/prorata)** | Tamper-evident submetering a tenant can verify | `Python` `FastAPI` `Angular` | [▶](#prorata) |
+| **[Ferrogate](https://github.com/Zoel-Manchon/ferrogate)** | Multi-tenant telemetry isolated in the engine | `Python` `MQTT/mTLS` `InfluxDB` | [▶](#ferrogate) |
+| **[AegisVault](https://github.com/Zoel-Manchon/aegisvault)** | Zero-knowledge secrets vault with Rust crypto | `Python` `Rust` `PyO3` | [▶](#aegisvault) |
+| **[Phosphor](https://github.com/Zoel-Manchon/phosphor)** | Native file integrity monitor, signed baselines | `Rust` `egui` `HMAC` | [▶](#phosphor) |
 
 ---
 
@@ -55,7 +55,7 @@ I focus on:
 
 # Featured engineering work
 
-## 1. [Emberwall — Hardened IoT/OT Security Linux](https://github.com/Zoel-Manchon/emberwall)
+## 1. <a id="emberwall"></a>[Emberwall — Hardened IoT/OT Security Linux](https://github.com/Zoel-Manchon/emberwall)
 
 **A minimal Linux distribution built from source for secure IoT/OT edge deployments.**
 
@@ -85,7 +85,7 @@ OT/IoT-aware TCP and UDP scanning with an Argon2id + XChaCha20-Poly1305 secrets 
 
 ---
 
-## 2. [Psychron — Secure Environmental Telemetry](https://github.com/Zoel-Manchon/psychron)
+## 2. <a id="psychron"></a>[Psychron — Secure Environmental Telemetry](https://github.com/Zoel-Manchon/psychron)
 
 **An ESP32 measures a room and produces a trustworthy record even through outages, reboots and an unavailable wall clock.**
 
@@ -109,14 +109,13 @@ integrity of the record.
 **Technology:** `ESP32 WROOM-32` · `Arduino C++` · `Python 3.12` · `FastAPI` · `React 19` · `PostgreSQL 17` · `TimescaleDB` · `MQTT/mTLS`
 
 [Repository](https://github.com/Zoel-Manchon/psychron) ·
-[Open full demo](https://github.com/user-attachments/assets/7cd61433-e8dd-42be-8adb-ff7d193a1d83) ·
 [Wire contract](https://github.com/Zoel-Manchon/psychron/blob/main/docs/CONTRACT.md)
 
 https://github.com/user-attachments/assets/7cd61433-e8dd-42be-8adb-ff7d193a1d83
 
 ---
 
-## 3. [Aegis — Zero-Trust Identity & Defensive Attack Range](https://github.com/Zoel-Manchon/aegis-zero-trust)
+## 3. <a id="aegis"></a>[Aegis — Zero-Trust Identity & Defensive Attack Range](https://github.com/Zoel-Manchon/aegis-zero-trust)
 
 **A Rust identity provider connected to a real-time Security Operations Console.**
 
@@ -138,14 +137,13 @@ a controlled attack range for demonstrating detection and response.
 **Technology:** `Rust` · `Axum` · `React` · `PostgreSQL` · `Redis` · `Caddy` · `Vault`
 
 [Repository](https://github.com/Zoel-Manchon/aegis-zero-trust) ·
-[Open full demo](https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4) ·
 [Walkthrough](https://github.com/Zoel-Manchon/aegis-zero-trust/blob/main/README.md)
 
 https://github.com/user-attachments/assets/db154dab-3684-4ee1-919d-70c0405ac1c4
 
 ---
 
-## 4. [HoneyTrap — MQTT/CoAP Honeypot That Refuses to Amplify](https://github.com/Zoel-Manchon/honeytrap)
+## 4. <a id="honeytrap"></a>[HoneyTrap — MQTT/CoAP Honeypot That Refuses to Amplify](https://github.com/Zoel-Manchon/honeytrap)
 
 **A low-interaction IoT honeypot whose hardest requirement was not capturing attacks, but never becoming one.**
 
@@ -169,14 +167,13 @@ datagram whether replying is safe.
 **Technology:** `Python` · `asyncio` · `Hexagonal architecture` · `MQTT` · `CoAP` · `InfluxDB` · `Grafana` · `Docker`
 
 [Repository](https://github.com/Zoel-Manchon/honeytrap) ·
-[Open full demo](https://github.com/user-attachments/assets/23ed7417-6421-4fc8-b83d-7f227bf84f72) ·
 [Architecture](https://github.com/Zoel-Manchon/honeytrap/blob/main/docs/ARCHITECTURE.md)
 
 https://github.com/user-attachments/assets/23ed7417-6421-4fc8-b83d-7f227bf84f72
 
 ---
 
-## 5. [Keystone — Device Identity & OTA Control Plane](https://github.com/Zoel-Manchon/keystone-control-plane)
+## 5. <a id="keystone"></a>[Keystone — Device Identity & OTA Control Plane](https://github.com/Zoel-Manchon/keystone-control-plane)
 
 **A control plane that decides who a device is and what firmware it is allowed to run.**
 
@@ -198,14 +195,13 @@ guaranteed by the compiler rather than by discipline.
 
 **Technology:** `Java 25` · `Spring Boot 4` · `PostgreSQL` · `Bouncy Castle` · `MQTT/mTLS` · `Testcontainers` · `ArchUnit`
 
-[Repository](https://github.com/Zoel-Manchon/keystone-control-plane) ·
-[Open full demo](https://github.com/user-attachments/assets/4ba67ffe-b369-4bb9-b658-b71dc7ed7610)
+[Repository](https://github.com/Zoel-Manchon/keystone-control-plane)
 
 https://github.com/user-attachments/assets/4ba67ffe-b369-4bb9-b658-b71dc7ed7610
 
 ---
 
-## 6. [Prorata — Tamper-Evident Submetering](https://github.com/Zoel-Manchon/prorata)
+## 6. <a id="prorata"></a>[Prorata — Tamper-Evident Submetering](https://github.com/Zoel-Manchon/prorata)
 
 **Split a building's shared consumption, and let the tenant recompute the evidence behind their bill.**
 
@@ -227,14 +223,13 @@ browser** — a proof checked by the server that issued the invoice would prove 
 
 **Technology:** `Python` · `FastAPI` · `Angular` · `MySQL` · `Ed25519` · `RFC 6962` · `Hexagonal architecture`
 
-[Repository](https://github.com/Zoel-Manchon/prorata) ·
-[Open full demo](https://github.com/user-attachments/assets/e0dd7a3c-2e27-4de8-8d5b-c59b388dc889)
+[Repository](https://github.com/Zoel-Manchon/prorata)
 
 https://github.com/user-attachments/assets/e0dd7a3c-2e27-4de8-8d5b-c59b388dc889
 
 ---
 
-## 7. [Ferrogate — Multi-Tenant Industrial Telemetry](https://github.com/Zoel-Manchon/ferrogate)
+## 7. <a id="ferrogate"></a>[Ferrogate — Multi-Tenant Industrial Telemetry](https://github.com/Zoel-Manchon/ferrogate)
 
 **Edge gateways that speak Modbus and OPC-UA, publishing to a platform that isolates each customer in the engine, not in the code.**
 
@@ -256,14 +251,13 @@ reorder or mix messages, but it cannot forge a valid one.
 
 **Technology:** `Python` · `DDD` · `Modbus` · `OPC-UA` · `MQTT/mTLS` · `PostgreSQL RLS` · `InfluxDB` · `Grafana`
 
-[Repository](https://github.com/Zoel-Manchon/ferrogate) ·
-[Open full demo](https://github.com/user-attachments/assets/a6826689-530c-48cd-af2b-8a3253fda893)
+[Repository](https://github.com/Zoel-Manchon/ferrogate)
 
 https://github.com/user-attachments/assets/a6826689-530c-48cd-af2b-8a3253fda893
 
 ---
 
-## 8. [AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault)
+## 8. <a id="aegisvault"></a>[AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault)
 
 **A zero-knowledge secrets manager with a Python domain core and native Rust cryptography.**
 
@@ -293,7 +287,7 @@ desktop application, keeping cryptographic operations isolated behind swappable 
 
 ---
 
-## 9. [Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor)
+## 9. <a id="phosphor"></a>[Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor)
 
 **A cross-platform Rust desktop tool for detecting filesystem tampering in real time.**
 
@@ -372,7 +366,7 @@ future ESP32 and LoRa hardware adapter without rewriting the domain model.
 ### Backend and data
 
 - **[Toychain](https://github.com/Zoel-Manchon/toychain)** — Rails 8 tamper-evident blockchain with background proof-of-work, authenticated real-time updates and an independent Python verifier. · [Demo](https://github.com/Zoel-Manchon/toychain/blob/main/docs/demo.gif)
-- **[Crypto·Watch](https://github.com/Zoel-Manchon/crypto-dashboard)** — Rust/Axum WebSocket backend, Astro/React frontend, PostgreSQL persistence and Docker delivery. · [Demo](https://github.com/user-attachments/assets/ea7354d5-4b99-441a-8539-334415d53749)
+- **[Crypto·Watch](https://github.com/Zoel-Manchon/crypto-dashboard)** — Rust/Axum WebSocket backend, Astro/React frontend, PostgreSQL persistence and Docker delivery.
 - **[QuantLab](https://github.com/Zoel-Manchon/quantlab)** — DDD and hexagonal backtesting engine with order execution, OCO controls, walk-forward analysis and performance metrics.
 - **[Elitewear XI](https://github.com/Zoel-Manchon/elitewear-xi)** — Laravel 13 ecommerce with PayPal checkout and a versioned REST API, built with application security as the design constraint: IDOR prevention, row-level locking against stock and coupon oversell, strict CSP without inline scripts and a tamper-evident audit log. The test suite verifies that the attacks fail.
 
