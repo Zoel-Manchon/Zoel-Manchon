@@ -29,8 +29,10 @@ real-time backends and native tools.
 | **[Keystone](https://github.com/Zoel-Manchon/keystone-control-plane)** | Device identity and OTA plane with its own CA | `Java 25` `Spring Boot` `PostgreSQL` | [▶](#keystone) |
 | **[Prorata](https://github.com/Zoel-Manchon/prorata)** | Tamper-evident submetering a tenant can verify | `Python` `FastAPI` `Angular` | [▶](#prorata) |
 | **[Ferrogate](https://github.com/Zoel-Manchon/ferrogate)** | Multi-tenant telemetry isolated in the engine | `Python` `MQTT/mTLS` `InfluxDB` | [▶](#ferrogate) |
-| **[AegisVault](https://github.com/Zoel-Manchon/aegisvault)** | Zero-knowledge secrets vault with Rust crypto | `Python` `Rust` `PyO3` | [▶](#aegisvault) |
-| **[Phosphor](https://github.com/Zoel-Manchon/phosphor)** | Native file integrity monitor, signed baselines | `Rust` `egui` `HMAC` | [▶](#phosphor) |
+| **[AgriSentinel](https://github.com/Zoel-Manchon/agrisentinel)** | Rural IoT lab whose gateway trusts no frame | `Python` `MQTT/mTLS` `Grafana` | [▶](#agrisentinel) |
+| **[Sentinel Node](https://github.com/Zoel-Manchon/sentinel-node)** | Edge sentinel where raw audio and video never leave | `ESP32-S3` `TinyML` `MQTT` | [▶](#sentinel-node) |
+| **[Solar Weather Station](https://github.com/Zoel-Manchon/solar-weather-station)** | Solar ESP32 station whose core runs on MicroPython | `Python` `LoRa` `InfluxDB` | [▶](#solar-weather-station) |
+| **[Pyscan](https://github.com/Zoel-Manchon/pyscan)** | OT scanner and ICS intrusion detector on one core | `Python` `asyncio` `Modbus/S7` | [▶](#pyscan) |
 
 ---
 
@@ -257,100 +259,130 @@ https://github.com/user-attachments/assets/a6826689-530c-48cd-af2b-8a3253fda893
 
 ---
 
-## 8. <a id="aegisvault"></a>[AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault)
+## 8. <a id="agrisentinel"></a>[AgriSentinel — Rural IoT Security Lab](https://github.com/Zoel-Manchon/agrisentinel)
 
-**A zero-knowledge secrets manager with a Python domain core and native Rust cryptography.**
+**Crops, water and livestock telemetry behind a gateway that treats the sensor network itself as an attack surface.**
 
-The project applies domain-driven and hexagonal architecture to a security-sensitive
-desktop application, keeping cryptographic operations isolated behind swappable ports.
-
-**Engineering evidence**
-
-- Argon2id key derivation and XChaCha20-Poly1305 authenticated encryption.
-- Rust crypto engine integrated into Python through PyO3.
-- Envelope encryption and Shamir K-of-N recovery.
-- TOTP, password rotation and X25519 public-key sharing with revocation.
-- Tamper-evident hash-chained audit ledger with JSON, CEF and syslog export.
-- Secret injection for development workflows and an auto-locking local agent.
-- PySide6 desktop interface and automated tests across crypto backends.
-
-**Technology:** `Python` · `Rust` · `PyO3` · `PySide6` · `SQLite` · `Applied cryptography`
-
-[Repository](https://github.com/Zoel-Manchon/aegisvault) ·
-[Demo in GitHub viewer](https://github.com/Zoel-Manchon/aegisvault/blob/main/docs/demo.gif)
-
-<a href="https://github.com/Zoel-Manchon/aegisvault/blob/main/docs/demo.gif">
-  <img src="https://raw.githubusercontent.com/Zoel-Manchon/aegisvault/main/docs/demo.gif"
-       alt="AegisVault unlocking, secret management and audit ledger demo"
-       width="100%">
-</a>
-
----
-
-## 9. <a id="phosphor"></a>[Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor)
-
-**A cross-platform Rust desktop tool for detecting filesystem tampering in real time.**
-
-Phosphor anchors a signed baseline for a directory, watches changes through native
-filesystem notifications and exposes modified, added or deleted files immediately.
+A spoofed soil probe triggers needless irrigation; a replayed "tank full" hides a dry tank.
+Three field nodes sign every reading, and the gateway verifies, inspects and only then
+forwards what it trusts — clean telemetry and security alerts on separate streams, so one
+pipeline feeds both an agronomy dashboard and a SOC dashboard.
 
 **Engineering evidence**
 
-- SHA-256 file baselines protected by HMAC-SHA256 signatures.
-- Constant-time signature verification.
-- Real-time filesystem monitoring and native desktop alerts.
-- Gitignore-style exclusion rules and controlled re-baselining.
-- JSON and CEF export for SIEM ingestion.
-- Unit-tested core with no UI dependencies.
+- Every frame carries an HMAC, a sequence number and a nonce; per-node keys are derived from one master, with rotation and revocation.
+- Four independent checks at the gateway: bad signature, out-of-range value, replay (by sequence **and** by nonce), and stale or flooding traffic.
+- Physics is the last line of defence: an attacker holding the key still cannot report 250% soil moisture without an alert.
+- MQTT over mutual TLS, one client certificate per node (`CN = key_id`), individually revocable by CRL.
+- Tamper-evident hash-chained log of security events; InfluxDB and Grafana behind a TLS proxy with a write-only token.
+- A CI fitness test proves the core imports no adapters, I/O or crypto, so raw wire bytes never reach the domain and the core stays MicroPython-safe.
+- Threat model with zones, conduits, STRIDE and IEC 62443 foundational requirements; 43 tests.
 
-**Technology:** `Rust` · `egui` · `SHA-256` · `HMAC` · `SIEM`
-
-[Repository](https://github.com/Zoel-Manchon/phosphor) ·
-[Demo in GitHub viewer](https://github.com/Zoel-Manchon/phosphor/blob/main/docs/demo.gif)
-
-<a href="https://github.com/Zoel-Manchon/phosphor/blob/main/docs/demo.gif">
-  <img src="https://raw.githubusercontent.com/Zoel-Manchon/phosphor/main/docs/demo.gif"
-       alt="Phosphor baseline signing and real-time tamper detection demo"
-       width="100%">
-</a>
-
----
-
-# IoT and edge-security systems
-
-## [AgriSentinel](https://github.com/Zoel-Manchon/agrisentinel)
-
-A simulation-first rural IoT security lab spanning crops, water and livestock.
-Each node signs telemetry with HMAC, sequence numbers and nonces. The gateway detects
-replay, stale, rate and physically impossible readings before trusted data reaches
-MQTT, InfluxDB and Grafana.
-
-`Python` · `Hexagonal architecture` · `MQTT` · `InfluxDB` · `Grafana` · `HMAC`
+**Technology:** `Python` · `Hexagonal architecture` · `HMAC` · `MQTT/mTLS` · `Node-RED` · `InfluxDB` · `Grafana` · `Caddy`
 
 [Repository](https://github.com/Zoel-Manchon/agrisentinel) ·
-[SOC demo](https://github.com/Zoel-Manchon/agrisentinel/blob/main/docs/demo-soc.gif)
+[Threat model](https://github.com/Zoel-Manchon/agrisentinel/blob/main/docs/THREAT_MODEL.md)
 
-## [Sentinel Node](https://github.com/Zoel-Manchon/sentinel-node)
+<a href="https://github.com/Zoel-Manchon/agrisentinel/blob/main/docs/demo-soc.gif">
+  <img src="https://raw.githubusercontent.com/Zoel-Manchon/agrisentinel/main/docs/demo-soc.gif"
+       alt="AgriSentinel security dashboard flipping to UNDER ATTACK as an injected spoof attack raises alerts"
+       width="100%">
+</a>
 
-A multi-sensor edge architecture combining air quality, mmWave presence, acoustic
-TinyML and vision. Raw audio and images remain at the edge; only classifications and
-trusted observations enter the telemetry pipeline.
+---
 
-`ESP32-S3` · `Edge ML` · `Python` · `MQTT` · `Node-RED` · `Grafana`
+## 9. <a id="sentinel-node"></a>[Sentinel Node — Multi-Sensor Edge Sentinel](https://github.com/Zoel-Manchon/sentinel-node)
+
+**Air quality, mmWave presence, acoustic TinyML and vision on one hexagonal core — and raw media never enters the pipeline.**
+
+The audio node classifies on the device and publishes only the verdict; the camera writes
+its JPEG out of band and puts a *path* in the event. A time-series database is not a blob
+store, and a microphone that ships audio is a different product with different consent.
+
+**Engineering evidence**
+
+- Two kinds of observation: a `Measurement` is a scalar reading, an `Event` is a classification from an edge model — separate data and event planes in InfluxDB.
+- Glass-break or person-count verdicts leave the device; audio samples and images do not.
+- One coherent simulated space: a single occupancy schedule drives the radar, CO₂/VOC, room temperature, sound events and head count, so the channels agree because they share a cause.
+- The hexagon is enforced by `tests/test_architecture.py`: the domain and use cases import no adapters and run unmodified on MicroPython.
+- The move to hardware is per sensor and mechanical — one import line — and sensors not yet on the bench stay simulated.
+- 55 tests, architecture fitness functions included.
+
+**Technology:** `ESP32-S3` · `TinyML` · `ESP32-CAM` · `BME680` · `LD2410 mmWave` · `Python / MicroPython` · `MQTT` · `Node-RED` · `InfluxDB` · `Grafana`
 
 [Repository](https://github.com/Zoel-Manchon/sentinel-node) ·
-[Dashboard demo](https://github.com/Zoel-Manchon/sentinel-node/blob/main/docs/screenshots/demo.gif)
+[Setup guide](https://github.com/Zoel-Manchon/sentinel-node/blob/main/docs/SETUP.md)
 
-## [Solar Weather Station](https://github.com/Zoel-Manchon/solar-weather-station)
+<a href="https://github.com/Zoel-Manchon/sentinel-node/blob/main/docs/screenshots/demo.gif">
+  <img src="https://raw.githubusercontent.com/Zoel-Manchon/sentinel-node/main/docs/screenshots/demo.gif"
+       alt="Sentinel Node Grafana dashboard: a simulated day of occupancy, air quality and a scripted acoustic anomaly"
+       width="100%">
+</a>
 
-A simulation-first, solar-powered weather station with coherent virtual sensors,
-battery behaviour and environmental events. Its hexagonal core is prepared for a
-future ESP32 and LoRa hardware adapter without rewriting the domain model.
+---
 
-`Python` · `ESP32-ready` · `LoRa` · `MQTT` · `Node-RED` · `InfluxDB` · `Grafana`
+## 10. <a id="solar-weather-station"></a>[Solar Weather Station — Self-Powered ESP32 Telemetry](https://github.com/Zoel-Manchon/solar-weather-station)
 
-[Repository](https://github.com/Zoel-Manchon/solar-weather-station) ·
-[Demo](https://github.com/Zoel-Manchon/solar-weather-station/blob/main/docs/demo.gif)
+**A solar ESP32 weather station whose core runs on the microcontroller unchanged — and a test that walks the AST to keep it that way.**
+
+BME280, BH1750, PMS5003 and a rain sensor report from an 18650 cell and a small panel.
+The whole pipeline runs today without hardware, against one coherent virtual weather world
+rather than four random generators.
+
+**Engineering evidence**
+
+- The domain and use cases import no adapters, no third-party libraries and none of `typing`, `dataclasses`, `abc`, `enum` or `asyncio`; an AST-walking test fails CI if that breaks.
+- One world, every channel: a storm saturates humidity, collapses illuminance and scrubs particulates on every panel at once, because it is the same event.
+- Solar charging and 18650 battery state are modelled and reported as telemetry.
+- The transport is a port: MQTT straight to the broker today, LoRa P2P at 868 MHz and a gateway slotting in ahead of it without touching the core.
+- A demo director scripts the rain cues, so a full day replays in twelve minutes, reproducibly.
+- 43 tests; next is a binary codec of 64 bytes or less, because JSON does not fit the LoRa payload budget.
+
+**Technology:** `Python / MicroPython` · `ESP32` · `LoRa P2P` · `MQTT` · `Node-RED` · `InfluxDB` · `Grafana`
+
+[Repository](https://github.com/Zoel-Manchon/solar-weather-station)
+
+<a href="https://github.com/Zoel-Manchon/solar-weather-station/blob/main/docs/demo.gif">
+  <img src="https://raw.githubusercontent.com/Zoel-Manchon/solar-weather-station/main/docs/demo.gif"
+       alt="Solar Weather Station Grafana dashboard: a simulated day with a scripted rain event"
+       width="100%">
+</a>
+
+---
+
+## 11. <a id="pyscan"></a>[Pyscan — OT Scanner & ICS Intrusion Detector](https://github.com/Zoel-Manchon/pyscan)
+
+**A port scanner, an OT protocol identifier, a packet sniffer and an ICS detection engine — all on one small hexagon.**
+
+A scanner asks *what is this device?*; an intrusion detector asks *who is touching it?*.
+Both need to know what a Modbus write is, so here they share one set of pure protocol
+codecs instead of each keeping its own copy — fix a codec once and both products are fixed.
+
+**Engineering evidence**
+
+- Async TCP connect, SYN over IPv4 and IPv6, and UDP with protocol-aware payloads, plus banner and version fingerprinting and a CIDR sweep rate-limited across the whole sweep.
+- Read-only OT identification: Modbus device ID, IEC 60870-5-104 keepalive and the S7comm module order number.
+- `pyscan monitor` checks Modbus, IEC-104 and S7comm traffic against a baseline of who may drive the process, with alerts mapped to MITRE ATT&CK for ICS and the action a responder should take.
+- Streaming pcap and pcapng reader of its own: the whole OT toolkit runs on the standard library.
+- Two Textual TUIs, including an OT command centre with an evidence timeline and a one-keystroke incident report.
+- A new technique is one file and one `@register` line; the domain knows nothing about sockets, files or the terminal.
+- 255 tests, 89% coverage gated in CI, `mypy --strict`, `ruff`, `bandit`, CodeQL and `pip-audit` on Linux, macOS and Windows.
+
+**Technology:** `Python` · `asyncio` · `Typer` · `Textual` · `Modbus` · `IEC-104` · `S7comm` · `MITRE ATT&CK for ICS`
+
+[Repository](https://github.com/Zoel-Manchon/pyscan)
+
+https://github.com/user-attachments/assets/ad3e4071-137c-411f-9e3b-ee4022adcc8b
+
+---
+
+# Security desktop tools
+
+| [AegisVault — Local-First Encrypted Secrets Vault](https://github.com/Zoel-Manchon/aegisvault) | [Phosphor — Native File Integrity Monitor](https://github.com/Zoel-Manchon/phosphor) |
+|---|---|
+| <a href="https://github.com/Zoel-Manchon/aegisvault/blob/main/docs/demo.gif"><img src="https://raw.githubusercontent.com/Zoel-Manchon/aegisvault/main/docs/demo.gif" alt="AegisVault unlocking, secret management and audit ledger demo" width="100%"></a> | <a href="https://github.com/Zoel-Manchon/phosphor/blob/main/docs/demo.gif"><img src="https://raw.githubusercontent.com/Zoel-Manchon/phosphor/main/docs/demo.gif" alt="Phosphor baseline signing and real-time tamper detection demo" width="100%"></a> |
+| Zero-knowledge vault with a Python domain core and Rust cryptography through PyO3: Argon2id, XChaCha20-Poly1305, envelope encryption, Shamir K-of-N recovery and a hash-chained audit ledger. | Signs a SHA-256 baseline with HMAC, verifies it in constant time and flags modified, added or deleted files in real time, with JSON and CEF export for a SIEM. |
+| `Python` · `Rust` · `PyO3` · `PySide6` | `Rust` · `egui` · `HMAC` · `SIEM` |
 
 ---
 
@@ -359,7 +391,6 @@ future ESP32 and LoRa hardware adapter without rewriting the domain model.
 ### Security and systems
 
 - **[Maat](https://github.com/Zoel-Manchon/maat)** — Rust modal editor with SHA-256 integrity tracking, atomic saves, external-change detection and SIEM audit output. · [Demo](https://github.com/Zoel-Manchon/maat/blob/main/assets/maat-demo.gif)
-- **[Pyscan](https://github.com/Zoel-Manchon/pyscan)** — asynchronous network and OT-protocol scanner with host discovery, fingerprinting and structured output. · [Demo](https://github.com/Zoel-Manchon/pyscan/blob/main/docs/demo.gif)
 - **[Auth-Lab](https://github.com/Zoel-Manchon/auth-lab)** — NestJS zero-trust authentication lab with MFA, replay defence, risk analysis and a controlled attack simulator. · [Demo](https://github.com/Zoel-Manchon/auth-lab/blob/main/docs/diagrams/demo/attack-simulator.gif)
 - **[Arch Linux Hardened Server](https://github.com/Zoel-Manchon/arch-linux-hardened-server)** — documented Linux hardening and attack-surface reduction.
 
@@ -372,7 +403,6 @@ future ESP32 and LoRa hardware adapter without rewriting the domain model.
 
 ### Earlier hardware and telemetry work
 
-- **[API IoT](https://github.com/Zoel-Manchon/api_iot)** — ESP32 and DHT22 telemetry over MQTT to a Node.js backend and React dashboard.
 - **[Eastron LoRaWAN Energy Monitoring](https://github.com/Zoel-Manchon/eastron-lorawan-energy-monitoring)** — electrical-energy telemetry with LoRaWAN, InfluxDB and Grafana.
 - **[SmartWatch LoRaWAN](https://github.com/Zoel-Manchon/Proyecto_IoT_J3_SmartWatch_LoRaWAN)** — wearable sensing and remote monitoring over LoRaWAN.
 - **[Snake HD](https://github.com/Zoel-Manchon/snake-hd)** — polished Pygame project with a tamper-evident leaderboard backed by Rust/Axum. · [Demo](https://github.com/Zoel-Manchon/snake-hd/blob/main/docs/screenshots/snake_hd.gif)
